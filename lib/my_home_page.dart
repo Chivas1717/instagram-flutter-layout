@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_instagram_layout/wrapper_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -29,22 +30,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 // ),
                 // Text('adwdadada'),
                 Expanded(child: Container()),
+
                 Container(
-                  // decoration: const BoxDecoration(
-                  //     gradient: LinearGradient(
-                  //         begin: Alignment.topLeft,
-                  //         end: Alignment.bottomRight,
-                  //         colors: [Colors.purple, Colors.orange])),
-                  height: 70,
-                  child: Expanded(
-                      child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size.fromHeight(40),
-                    ),
-                    onPressed: () {},
-                    child: const Text('Log in'),
-                  )),
-                ),
+                    child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(70),
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const PostPage(title: 'SecondPage');
+                    }));
+                  },
+                  child: const Text(
+                    'Log in',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                )),
               ],
             ),
           ),
