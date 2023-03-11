@@ -11,23 +11,51 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(children: [
-        Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/imgs/mark_avatar.png'),
-              fit: BoxFit.fill,
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.black),
+        backgroundColor: Colors.white,
+        title: Container(
+          height: 30,
+          decoration: BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.all(
+              Radius.circular(8),
+            ),
+          ),
+          child: TextField(
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.only(top: 0),
+              hintText: 'Пошук',
+              border: InputBorder.none,
+              prefix: Icon(Icons.search),
+              isDense: true,
             ),
           ),
         ),
-        Expanded(
+      ),
+      body: Column(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/imgs/mark_avatar.png'),
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          Expanded(
             child: ListView.builder(
-                itemCount: 12,
-                itemBuilder: (context, index) {
-                  return RecomendationsBlock();
-                }))
-      ]),
+              itemCount: 12,
+              itemBuilder: (context, index) {
+                return const RecomendationsBlock();
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -39,50 +39,6 @@ class _PostPage extends State<PostPage> {
     return Container(
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          leading: const Icon(
-            FontAwesomeIcons.instagram,
-            color: Colors.black,
-            size: 33,
-          ),
-          actions: [
-            Container(
-              width: 80,
-              margin: const EdgeInsets.only(right: 10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
-                    icon: _selectedIndex == 5
-                        ? const Icon(
-                            Icons.favorite,
-                            color: Colors.black,
-                          )
-                        : const Icon(Icons.favorite_border),
-                    color: Colors.black,
-                    iconSize: 28,
-                    onPressed: () {},
-                  ),
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
-                    icon: Icon(Icons.message),
-                    color: Colors.black,
-                    iconSize: 30,
-                    onPressed: () {},
-                  )
-                ],
-              ),
-            )
-          ],
-          backgroundColor: Colors.white,
-          shape: const Border(
-            bottom: BorderSide(
-                color: Color.fromARGB(255, 201, 199, 195), width: 0.4),
-          ),
-        ),
         body: _widgetOptions.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.black,

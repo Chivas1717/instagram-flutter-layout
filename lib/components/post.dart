@@ -55,8 +55,8 @@ class _PostState extends State<Post> {
                 Container(
                   margin: const EdgeInsets.only(left: 10),
                   child: const Text(
-                    '433',
-                    style: TextStyle(fontFamily: 'Halvetica', fontSize: 20),
+                    'markguddest',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Expanded(child: Container()),
