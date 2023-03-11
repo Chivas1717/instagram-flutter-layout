@@ -59,7 +59,9 @@ class _PostState extends State<Post> {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),
-                Expanded(child: Container()),
+                Expanded(
+                  child: Container(),
+                ),
                 const Icon(
                   Icons.more_horiz,
                   size: 30,

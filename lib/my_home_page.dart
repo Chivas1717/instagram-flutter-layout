@@ -14,25 +14,22 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Colors.purple, Colors.orange])),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Container(
-                //   child: Image.asset('assets/imgs/instagram-word-logo.png'),
-                // ),
-                // Text('adwdadada'),
-                Expanded(child: Container()),
-
-                Container(
-                    child: ElevatedButton(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Colors.purple, Colors.orange],
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(child: Container()),
+              Container(
+                child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     minimumSize: const Size.fromHeight(70),
                   ),
@@ -46,10 +43,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     'Log in',
                     style: TextStyle(fontSize: 20),
                   ),
-                )),
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

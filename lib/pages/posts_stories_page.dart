@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -40,14 +39,14 @@ class _PostsStoriesState extends State<PostsStories> {
                 IconButton(
                   padding: EdgeInsets.zero,
                   constraints: const BoxConstraints(),
-                  icon: Icon(Icons.message),
+                  icon: const Icon(Icons.message),
                   color: Colors.black,
                   iconSize: 30,
                   onPressed: () {},
                 )
               ],
             ),
-          )
+          ),
         ],
         backgroundColor: Colors.white,
         shape: const Border(

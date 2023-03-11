@@ -19,13 +19,13 @@ class _SearchState extends State<Search> {
         backgroundColor: Colors.white,
         title: Container(
           height: 30,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.grey,
             borderRadius: BorderRadius.all(
               Radius.circular(8),
             ),
           ),
-          child: TextField(
+          child: const TextField(
             decoration: InputDecoration(
               contentPadding: EdgeInsets.only(top: 0),
               hintText: 'Пошук',

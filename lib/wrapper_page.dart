@@ -43,8 +43,8 @@ class _PostPage extends State<PostPage> {
         bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.grey.shade700,
-          selectedLabelStyle: TextStyle(fontWeight: FontWeight.w600),
-          unselectedLabelStyle: TextStyle(fontWeight: FontWeight.w600),
+          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+          unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
@@ -92,9 +92,3 @@ class _PostPage extends State<PostPage> {
     );
   }
 }
-
-// Icon(
-//                     Icons.add_box_outlined,
-//                     color: Colors.black,
-//                     size: 30,
-//                   ),
