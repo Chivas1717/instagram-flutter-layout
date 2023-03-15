@@ -22,10 +22,11 @@ class _PostsState extends State<Posts> {
         color: Colors.white,
       ),
       child: ListView.builder(
-          itemCount: 4,
-          itemBuilder: (context, index) {
-            return const Post();
-          }),
+        itemCount: 4,
+        itemBuilder: (context, index) {
+          return const Post();
+        },
+      ),
     );
   }
 }

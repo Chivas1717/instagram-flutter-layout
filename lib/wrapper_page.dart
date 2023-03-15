@@ -7,16 +7,16 @@ import 'package:flutter_instagram_layout/pages/reels_page.dart';
 import 'package:flutter_instagram_layout/pages/search_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class PostPage extends StatefulWidget {
-  const PostPage({super.key, required this.title});
+class WrapperPage extends StatefulWidget {
+  const WrapperPage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<PostPage> createState() => _PostPage();
+  State<WrapperPage> createState() => _WrapperPage();
 }
 
-class _PostPage extends State<PostPage> {
+class _WrapperPage extends State<WrapperPage> {
   int _selectedIndex = 0;
 
   void _onClickTab(int index) {

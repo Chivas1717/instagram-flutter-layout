@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_instagram_layout/components/post.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../components/posts.dart';
@@ -54,14 +55,17 @@ class _PostsStoriesState extends State<PostsStories> {
               BorderSide(color: Color.fromARGB(255, 201, 199, 195), width: 0.4),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: const [
-          Stories(),
-          Expanded(
-            child: Posts(),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Stories(),
+            // Expanded(
+            //   child: Posts(),
+            // ),
+            for (int i = 0; i < 20; i++) const Post(),
+          ],
+        ),
       ),
     );
   }

@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return const PostPage(title: 'SecondPage');
+                      return const WrapperPage(title: 'SecondPage');
                     }));
                   },
                   child: const Text(

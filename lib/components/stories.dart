@@ -28,9 +28,17 @@ class _StoriesState extends State<Stories> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 88,
+      height: 99,
       margin: const EdgeInsets.only(top: 10.0),
+      padding: const EdgeInsets.only(bottom: 10),
       width: MediaQuery.of(context).size.width,
+      decoration: const BoxDecoration(
+        border: Border(
+          bottom:
+              BorderSide(color: Color.fromARGB(255, 201, 199, 195), width: 0.4),
+        ),
+        color: Colors.white,
+      ),
       child: ListView.builder(
         itemCount: storiesList.length,
         scrollDirection: Axis.horizontal,
