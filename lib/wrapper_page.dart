@@ -36,7 +36,7 @@ class _WrapperPage extends State<WrapperPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       child: Scaffold(
         backgroundColor: Colors.white,
         body: _widgetOptions.elementAt(_selectedIndex),

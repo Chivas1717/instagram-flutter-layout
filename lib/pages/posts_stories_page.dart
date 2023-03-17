@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/components/post.dart';
+import 'package:flutter_instagram_layout/pages/search_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../components/posts.dart';
@@ -13,6 +14,21 @@ class PostsStories extends StatefulWidget {
 }
 
 class _PostsStoriesState extends State<PostsStories> {
+  final items = const <Item>[
+    Item(urlImage: 'Kirkjufell-volcano.png', userName: 'markguddest', likes: 7),
+    Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
+    Item(urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
+    Item(urlImage: 'Kirkjufell-volcano.png', userName: 'markguddest', likes: 7),
+    Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
+    Item(urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
+    Item(urlImage: 'Kirkjufell-volcano.png', userName: 'markguddest', likes: 7),
+    Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
+    Item(urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
+    Item(urlImage: 'Kirkjufell-volcano.png', userName: 'markguddest', likes: 7),
+    Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
+    Item(urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,11 +75,14 @@ class _PostsStoriesState extends State<PostsStories> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Stories(),
-            // Expanded(
-            //   child: Posts(),
-            // ),
-            for (int i = 0; i < 20; i++) const Post(),
+            const Stories(),
+            for (int i = 0; i < 12; i++)
+              SizedBox(
+                width: 392,
+                child: Post(
+                  item: items[i],
+                ),
+              ),
           ],
         ),
       ),

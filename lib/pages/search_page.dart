@@ -9,6 +9,41 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+  final items = const <List>[
+    [
+      Item(
+          urlImage: 'Kirkjufell-volcano.png',
+          userName: 'markguddest',
+          likes: 7),
+      Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
+      Item(urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
+    ],
+    [
+      Item(
+          urlImage: 'Kirkjufell-volcano.png',
+          userName: 'markguddestt',
+          likes: 7),
+      Item(urlImage: 'Piramids.png', userName: 'Olegprostoo', likes: 7),
+      Item(urlImage: 'Niagara-falls.png', userName: 'therockk', likes: 7),
+    ],
+    [
+      Item(
+          urlImage: 'Kirkjufell-volcano.png',
+          userName: 'markguddesttt',
+          likes: 7),
+      Item(urlImage: 'Piramids.png', userName: 'Olegprostooo', likes: 7),
+      Item(urlImage: 'Niagara-falls.png', userName: 'therockkk', likes: 7),
+    ],
+    [
+      Item(
+          urlImage: 'Kirkjufell-volcano.png',
+          userName: 'markguddestttt',
+          likes: 7),
+      Item(urlImage: 'Piramids.png', userName: 'Olegprostoooo', likes: 7),
+      Item(urlImage: 'Niagara-falls.png', userName: 'therockkkk', likes: 7),
+    ],
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,9 +83,9 @@ class _SearchState extends State<Search> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: 12,
+              itemCount: 4,
               itemBuilder: (context, index) {
-                return const RecomendationsBlock();
+                return RecomendationsBlock(i: index, posts: items[index]);
               },
             ),
           ),
@@ -58,4 +93,13 @@ class _SearchState extends State<Search> {
       ),
     );
   }
+}
+
+class Item {
+  final String urlImage;
+  final String userName;
+  final int likes;
+
+  const Item(
+      {required this.urlImage, required this.userName, required this.likes});
 }

@@ -29,9 +29,9 @@ class _StoriesState extends State<Stories> {
   Widget build(BuildContext context) {
     return Container(
       height: 99,
+      width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.only(top: 10.0),
       padding: const EdgeInsets.only(bottom: 10),
-      width: MediaQuery.of(context).size.width,
       decoration: const BoxDecoration(
         border: Border(
           bottom:
