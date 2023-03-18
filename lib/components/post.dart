@@ -14,6 +14,11 @@ class Post extends StatefulWidget {
 
 class _PostState extends State<Post> {
   bool _isLiked = false;
+  final _usersAvatars = {
+    'markguddest': 'mark_avatar.png',
+    'Olegprosto': 'photo_2022-12-19_01-11-27.png',
+    'therock': 'therock_avatar.png'
+  };
 
   void _onClickLike() {
     setState(() {
@@ -45,14 +50,14 @@ class _PostState extends State<Post> {
                       Color(0xFF4f5bd5),
                     ], begin: Alignment.bottomLeft, end: Alignment.topRight),
                   ),
-                  child: const CircleAvatar(
+                  child: CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 25,
                     child: CircleAvatar(
                       radius: 20,
                       backgroundColor: Colors.transparent,
                       backgroundImage: AssetImage(
-                        'assets/imgs/mark_avatar.png',
+                        'assets/imgs/${_usersAvatars[widget.item.userName] ?? 'mark_avatar.png'}',
                       ),
                     ),
                   ),
@@ -142,7 +147,7 @@ class _PostState extends State<Post> {
                 IconButton(
                   padding: EdgeInsets.zero,
                   constraints: const BoxConstraints(),
-                  icon: const Icon(Icons.save_alt),
+                  icon: const Icon(Icons.bookmark_border),
                   iconSize: 30,
                   onPressed: () {},
                 ),
@@ -156,6 +161,20 @@ class _PostState extends State<Post> {
                 Text(
                   '${widget.item.likes} likes',
                   style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(top: 20, left: 16),
+            child: Row(
+              children: const [
+                Text(
+                  '! Comments section is in developement',
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),

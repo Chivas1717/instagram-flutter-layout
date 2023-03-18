@@ -71,9 +71,20 @@ class _StoriesState extends State<Stories> {
                   ),
                 ),
               ),
-              Text('Olegggggg'.length > 8
-                  ? 'Olegggggg'.replaceRange(7, 'Olegggggg'.length, '...')
-                  : 'Olegggggg')
+              // Text(
+              //   'Olegggggg'.length > 8
+              //       ? 'Olegggggg'.replaceRange(7, 'Olegggggg'.length, '...')
+              //       : 'Olegggggg',
+              // )
+              const SizedBox(
+                width: 68,
+                child: Center(
+                  child: Text(
+                    'Oleggggdawdawwdawd',
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ),
             ],
           );
         },

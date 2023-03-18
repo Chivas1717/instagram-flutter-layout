@@ -3,7 +3,6 @@ import 'package:flutter_instagram_layout/components/post.dart';
 import 'package:flutter_instagram_layout/pages/search_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../components/posts.dart';
 import '../components/stories.dart';
 
 class PostsStories extends StatefulWidget {
@@ -14,6 +13,9 @@ class PostsStories extends StatefulWidget {
 }
 
 class _PostsStoriesState extends State<PostsStories> {
+  ScrollController scrollController = ScrollController();
+  bool showbtn = false;
+
   final items = const <Item>[
     Item(urlImage: 'Kirkjufell-volcano.png', userName: 'markguddest', likes: 7),
     Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
@@ -28,6 +30,22 @@ class _PostsStoriesState extends State<PostsStories> {
     Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
     Item(urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
   ];
+
+  @override
+  void initState() {
+    scrollController.addListener(() {
+      if (scrollController.offset > 10) {
+        setState(() {
+          showbtn = true;
+        });
+      } else {
+        setState(() {
+          showbtn = false;
+        });
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,11 +85,14 @@ class _PostsStoriesState extends State<PostsStories> {
         ],
         backgroundColor: Colors.white,
         shape: const Border(
-          bottom:
-              BorderSide(color: Color.fromARGB(255, 201, 199, 195), width: 0.4),
+          bottom: BorderSide(
+            color: Color.fromARGB(255, 201, 199, 195),
+            width: 0.4,
+          ),
         ),
       ),
       body: SingleChildScrollView(
+        controller: scrollController,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -87,12 +108,21 @@ class _PostsStoriesState extends State<PostsStories> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add your onPressed code here!
-        },
-        backgroundColor: Colors.green,
-        child: const Icon(Icons.navigation),
+      floatingActionButton: AnimatedOpacity(
+        duration: const Duration(milliseconds: 400),
+        opacity: showbtn ? 1.0 : 0.0,
+        child: FloatingActionButton(
+          onPressed: () {
+            scrollController.animateTo(
+              0,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.fastOutSlowIn,
+            );
+          },
+          backgroundColor: Colors.blue,
+          splashColor: Colors.amber,
+          child: const Icon(Icons.arrow_upward_outlined),
+        ),
       ),
     );
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/pages/create_page.dart';
-import 'package:flutter_instagram_layout/pages/notifications_page.dart';
 import 'package:flutter_instagram_layout/pages/posts_stories_page.dart';
 import 'package:flutter_instagram_layout/pages/profile_page.dart';
 import 'package:flutter_instagram_layout/pages/reels_page.dart';
@@ -53,8 +52,7 @@ class _WrapperPage extends State<WrapperPage>
     Search(),
     Create(),
     Reels(),
-    Profile(),
-    Notifications(),
+    Profile()
   ];
 
   @override

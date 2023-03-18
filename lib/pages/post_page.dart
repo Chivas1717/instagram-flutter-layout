@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/pages/search_page.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../components/post.dart';
 
@@ -53,16 +52,14 @@ class _PostPageState extends State<PostPage> {
           ),
         ),
       ),
-      body: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Post(
-              item: widget.item,
-              isHero: true,
-            )
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Post(
+            item: widget.item,
+            isHero: true,
+          )
+        ],
       ),
     );
   }

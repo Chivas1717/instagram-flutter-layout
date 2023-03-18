@@ -23,30 +23,25 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(child: Container()),
-              Container(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size.fromHeight(70),
-                  ),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const WrapperPage(title: 'SecondPage');
-                    }));
-                  },
-                  child: const Text(
-                    'Log in',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(child: Container()),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size.fromHeight(70),
               ),
-            ],
-          ),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const WrapperPage(title: 'SecondPage');
+                }));
+              },
+              child: const Text(
+                'Log in',
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+          ],
         ),
       ),
     );
