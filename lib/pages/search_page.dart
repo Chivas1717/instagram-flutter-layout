@@ -74,14 +74,6 @@ class _SearchState extends State<Search> {
       ),
       body: Column(
         children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/imgs/mark_avatar.png'),
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
           Expanded(
             child: ListView.builder(
               itemCount: 4,
@@ -101,6 +93,9 @@ class Item {
   final String userName;
   final int likes;
 
-  const Item(
-      {required this.urlImage, required this.userName, required this.likes});
+  const Item({
+    required this.urlImage,
+    required this.userName,
+    required this.likes,
+  });
 }

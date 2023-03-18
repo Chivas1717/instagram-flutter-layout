@@ -93,13 +93,6 @@ class _RecomendationsBlockState extends State<RecomendationsBlock> {
                           ),
                         ),
                       ),
-                      // SizedBox(
-                      //   height: 120,
-                      //   child: Image.asset(
-                      //     'assets/imgs/Kirkjufell-volcano.png',
-                      //     fit: BoxFit.cover,
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),
