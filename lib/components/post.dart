@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/pages/search_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -23,6 +25,7 @@ class _PostState extends State<Post> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(bottom: 15),
       child: Column(
         children: [
           Container(
@@ -49,8 +52,9 @@ class _PostState extends State<Post> {
                     child: CircleAvatar(
                       radius: 20,
                       backgroundColor: Colors.transparent,
-                      backgroundImage:
-                          AssetImage('assets/imgs/mark_avatar.png'),
+                      backgroundImage: AssetImage(
+                        'assets/imgs/mark_avatar.png',
+                      ),
                     ),
                   ),
                 ),
@@ -59,7 +63,9 @@ class _PostState extends State<Post> {
                   child: Text(
                     widget.item.userName,
                     style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Expanded(
@@ -72,10 +78,16 @@ class _PostState extends State<Post> {
               ],
             ),
           ),
-          Container(
-            alignment: Alignment.center,
-            child: Image.asset('assets/imgs/${widget.item.urlImage}',
-                height: 400, fit: BoxFit.cover),
+          Hero(
+            tag: widget.item,
+            child: Container(
+              alignment: Alignment.center,
+              child: Image.asset(
+                'assets/imgs/${widget.item.urlImage}',
+                height: 400,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
           Container(
             padding: const EdgeInsets.all(8),
@@ -95,7 +107,9 @@ class _PostState extends State<Post> {
                                 Icons.favorite,
                                 color: Colors.red,
                               )
-                            : const Icon(Icons.favorite_border),
+                            : const Icon(
+                                Icons.favorite_border,
+                              ),
                         iconSize: 31,
                         onPressed: _onClickLike,
                       ),
@@ -123,6 +137,20 @@ class _PostState extends State<Post> {
                   icon: const Icon(Icons.save_alt),
                   iconSize: 30,
                   onPressed: () {},
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 16),
+            child: Row(
+              children: [
+                Text(
+                  '${widget.item.likes} likes',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),

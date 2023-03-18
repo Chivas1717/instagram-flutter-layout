@@ -54,6 +54,7 @@ class _SearchState extends State<Search> {
         backgroundColor: Colors.white,
         title: Container(
           height: 30,
+          margin: EdgeInsets.only(left: 20),
           decoration: const BoxDecoration(
             color: Colors.grey,
             borderRadius: BorderRadius.all(
