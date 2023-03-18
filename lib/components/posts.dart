@@ -43,6 +43,7 @@ class _PostsState extends State<Posts> {
           final item = items[index];
           return Post(
             item: item,
+            isHero: false,
           );
         },
       ),

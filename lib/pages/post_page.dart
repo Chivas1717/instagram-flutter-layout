@@ -56,7 +56,12 @@ class _PostPageState extends State<PostPage> {
       body: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [Post(item: widget.item)],
+          children: [
+            Post(
+              item: widget.item,
+              isHero: true,
+            )
+          ],
         ),
       ),
     );

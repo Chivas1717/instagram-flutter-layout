@@ -1,13 +1,12 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/pages/search_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Post extends StatefulWidget {
-  const Post({super.key, required this.item});
+  const Post({super.key, required this.item, required this.isHero});
 
   final Item item;
+  final bool isHero;
 
   @override
   State<Post> createState() => _PostState();
@@ -25,7 +24,7 @@ class _PostState extends State<Post> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 15),
+      margin: const EdgeInsets.only(bottom: 15),
       child: Column(
         children: [
           Container(
@@ -78,17 +77,26 @@ class _PostState extends State<Post> {
               ],
             ),
           ),
-          Hero(
-            tag: widget.item,
-            child: Container(
-              alignment: Alignment.center,
-              child: Image.asset(
-                'assets/imgs/${widget.item.urlImage}',
-                height: 400,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
+          widget.isHero
+              ? Hero(
+                  tag: widget.item,
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      'assets/imgs/${widget.item.urlImage}',
+                      height: 400,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                )
+              : Container(
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    'assets/imgs/${widget.item.urlImage}',
+                    height: 400,
+                    fit: BoxFit.cover,
+                  ),
+                ),
           Container(
             padding: const EdgeInsets.all(8),
             child: Row(
@@ -270,12 +278,3 @@ class _PostState extends State<Post> {
     // );
   }
 }
-// CircleAvatar(
-//                   radius: 28,
-//                   backgroundColor: Colors.red,
-//                   child: CircleAvatar(
-//                     radius: 25,
-//                     backgroundImage:
-//                         AssetImage('assets/imgs/photo_2022-12-19_01-11-27.png'),
-//                   ),
-//                 )

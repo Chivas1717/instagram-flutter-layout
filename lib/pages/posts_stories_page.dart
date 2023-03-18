@@ -81,6 +81,7 @@ class _PostsStoriesState extends State<PostsStories> {
                 width: 392,
                 child: Post(
                   item: items[i],
+                  isHero: false,
                 ),
               ),
           ],
