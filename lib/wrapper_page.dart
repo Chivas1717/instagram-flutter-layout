@@ -5,7 +5,6 @@ import 'package:flutter_instagram_layout/pages/posts_stories_page.dart';
 import 'package:flutter_instagram_layout/pages/profile_page.dart';
 import 'package:flutter_instagram_layout/pages/reels_page.dart';
 import 'package:flutter_instagram_layout/pages/search_page.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class WrapperPage extends StatefulWidget {
   const WrapperPage({super.key, required this.title});
@@ -16,12 +15,36 @@ class WrapperPage extends StatefulWidget {
   State<WrapperPage> createState() => _WrapperPage();
 }
 
-class _WrapperPage extends State<WrapperPage> {
+class _WrapperPage extends State<WrapperPage>
+    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   int _selectedIndex = 0;
+  late TabController _controller;
+
+  @override
+  // ignore: must_call_super
+  void initState() {
+    super.initState();
+    _controller = TabController(length: _widgetOptions.length, vsync: this);
+    _controller.addListener(() {
+      setState(() {
+        _selectedIndex = _controller.index;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  bool get wantKeepAlive => true;
 
   void _onClickTab(int index) {
     setState(() {
       _selectedIndex = index;
+      _controller.animateTo(index);
     });
   }
 
@@ -39,7 +62,11 @@ class _WrapperPage extends State<WrapperPage> {
     return SizedBox(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: _widgetOptions.elementAt(_selectedIndex),
+        body: TabBarView(
+          controller: _controller,
+          children: _widgetOptions,
+        ),
+        // _widgetOptions.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.grey.shade700,
