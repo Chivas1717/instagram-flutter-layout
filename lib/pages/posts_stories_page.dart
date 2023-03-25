@@ -18,27 +18,63 @@ class _PostsStoriesState extends State<PostsStories> {
   ScrollController scrollController = ScrollController();
   bool showbtn = false;
 
-  final items = const <Item>[
+  final items = <Item>[
     Item(
-        id: 1,
-        urlImage: 'Kirkjufell-volcano.png',
-        userName: 'markguddest',
-        likes: 7),
-    Item(id: 1, urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
-    Item(id: 1, urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
+      id: 1,
+      urlImage: 'Kirkjufell-volcano.png',
+      userName: 'markguddest',
+      likes: 7,
+      isSaved: false,
+    ),
     Item(
-        id: 1,
-        urlImage: 'Kirkjufell-volcano.png',
-        userName: 'markguddest',
-        likes: 7),
-    Item(id: 1, urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
-    Item(id: 1, urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
+      id: 1,
+      urlImage: 'Piramids.png',
+      userName: 'Olegprosto',
+      likes: 7,
+      isSaved: false,
+    ),
     Item(
-        id: 1,
-        urlImage: 'Kirkjufell-volcano.png',
-        userName: 'markguddest',
-        likes: 7),
-    Item(id: 1, urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
+      id: 1,
+      urlImage: 'Niagara-falls.png',
+      userName: 'therock',
+      likes: 7,
+      isSaved: false,
+    ),
+    Item(
+      id: 1,
+      urlImage: 'Kirkjufell-volcano.png',
+      userName: 'markguddest',
+      likes: 7,
+      isSaved: false,
+    ),
+    Item(
+      id: 1,
+      urlImage: 'Piramids.png',
+      userName: 'Olegprosto',
+      likes: 7,
+      isSaved: false,
+    ),
+    Item(
+      id: 1,
+      urlImage: 'Niagara-falls.png',
+      userName: 'therock',
+      likes: 7,
+      isSaved: false,
+    ),
+    Item(
+      id: 1,
+      urlImage: 'Kirkjufell-volcano.png',
+      userName: 'markguddest',
+      likes: 7,
+      isSaved: false,
+    ),
+    Item(
+      id: 1,
+      urlImage: 'Piramids.png',
+      userName: 'Olegprosto',
+      likes: 7,
+      isSaved: false,
+    ),
   ];
 
   @override

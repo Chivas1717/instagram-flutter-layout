@@ -16,22 +16,29 @@ class Saved extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        iconTheme: const IconThemeData(color: Colors.black),
+      ),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            for (int i = 0; i < savedItems.length; i++)
-              SizedBox(
-                width: 392,
-                child: Post(
-                  item: savedItems[i],
-                  isHero: false,
-                  updateSaved: updateSaved,
-                ),
+        child: savedItems.isEmpty
+            ? Center(
+                child: Text('No saved posts found'),
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  for (int i = 0; i < savedItems.length; i++)
+                    SizedBox(
+                      width: 392,
+                      child: Post(
+                        item: savedItems[i],
+                        isHero: false,
+                        updateSaved: updateSaved,
+                      ),
+                    ),
+                ],
               ),
-          ],
-        ),
       ),
     );
   }

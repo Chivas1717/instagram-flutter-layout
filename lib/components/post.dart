@@ -19,7 +19,6 @@ class Post extends StatefulWidget {
 
 class _PostState extends State<Post> {
   bool _isLiked = false;
-  bool _isSaved = false;
   final _usersAvatars = {
     'markguddest': 'mark_avatar.png',
     'Olegprosto': 'photo_2022-12-19_01-11-27.png',
@@ -34,8 +33,8 @@ class _PostState extends State<Post> {
 
   void _onClickSave() {
     setState(() {
-      _isSaved = _isSaved ? false : true;
-      widget.updateSaved(_isSaved, widget.item);
+      widget.item.isSaved = widget.item.isSaved ? false : true;
+      widget.updateSaved(widget.item.isSaved, widget.item);
     });
   }
 
@@ -160,7 +159,7 @@ class _PostState extends State<Post> {
                 IconButton(
                   padding: EdgeInsets.zero,
                   constraints: const BoxConstraints(),
-                  icon: Icon(_isSaved
+                  icon: Icon(widget.item.isSaved
                       ? Icons.bookmark_outlined
                       : Icons.bookmark_border),
                   iconSize: 30,

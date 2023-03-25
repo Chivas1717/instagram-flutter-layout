@@ -58,11 +58,9 @@ class _WrapperPage extends State<WrapperPage>
     });
   }
 
-  void _test() {}
-
   List<Widget> _widgetOptions() => [
         PostsStories(updateSaved: _updateSaved),
-        const Search(),
+        Search(),
         const Create(),
         const Reels(),
         Profile(updateSaved: _updateSaved, savedItems: savedItems),

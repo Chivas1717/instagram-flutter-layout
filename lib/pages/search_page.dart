@@ -2,87 +2,99 @@ import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/components/recomendations_block.dart';
 
 class Search extends StatelessWidget {
-  const Search({super.key});
+  Search({super.key});
 
-  final items = const <List>[
+  final items = <List>[
     [
       Item(
         id: 1,
         urlImage: 'Kirkjufell-volcano.png',
         userName: 'markguddest',
         likes: 7,
+        isSaved: false,
       ),
       Item(
-        id: 1,
+        id: 2,
         urlImage: 'Piramids.png',
         userName: 'Olegprosto',
         likes: 7,
+        isSaved: false,
       ),
       Item(
-        id: 1,
+        id: 3,
         urlImage: 'Niagara-falls.png',
         userName: 'therock',
         likes: 7,
+        isSaved: false,
       ),
     ],
     [
       Item(
-        id: 1,
+        id: 4,
         urlImage: 'Kirkjufell-volcano.png',
         userName: 'markguddestt',
         likes: 7,
+        isSaved: false,
       ),
       Item(
-        id: 1,
+        id: 5,
         urlImage: 'Piramids.png',
         userName: 'Olegprostoo',
         likes: 7,
+        isSaved: false,
       ),
       Item(
-        id: 1,
+        id: 6,
         urlImage: 'Niagara-falls.png',
         userName: 'therockk',
         likes: 7,
+        isSaved: false,
       ),
     ],
     [
       Item(
-        id: 1,
+        id: 7,
         urlImage: 'Kirkjufell-volcano.png',
         userName: 'markguddesttt',
         likes: 7,
+        isSaved: false,
       ),
       Item(
-        id: 1,
+        id: 8,
         urlImage: 'Piramids.png',
         userName: 'Olegprostooo',
         likes: 7,
+        isSaved: false,
       ),
       Item(
-        id: 1,
+        id: 9,
         urlImage: 'Niagara-falls.png',
         userName: 'therockkk',
         likes: 7,
+        isSaved: false,
       ),
     ],
     [
       Item(
-        id: 1,
+        id: 10,
         urlImage: 'Kirkjufell-volcano.png',
         userName: 'markguddestttt',
         likes: 7,
+        isSaved: false,
       ),
       Item(
-        id: 1,
+        id: 11,
         urlImage: 'Piramids.png',
         userName: 'Olegprostoooo',
         likes: 7,
+        isSaved: false,
       ),
       Item(
-        id: 1,
+        id: 12,
         urlImage: 'Niagara-falls.png',
         userName: 'therockkkk',
         likes: 7,
+        isSaved: false,
       ),
     ],
   ];
@@ -136,11 +148,13 @@ class Item {
   final String urlImage;
   final String userName;
   final int likes;
+  late bool isSaved;
 
-  const Item({
+  Item({
     required this.id,
     required this.urlImage,
     required this.userName,
     required this.likes,
+    required this.isSaved,
   });
 }
