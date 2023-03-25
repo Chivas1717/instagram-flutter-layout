@@ -45,16 +45,16 @@ class HighlightStories extends StatelessWidget {
                     radius: 29,
                     backgroundColor: Colors.transparent,
                     backgroundImage: AssetImage(
-                      'assets/imgs/photo_2022-12-19_01-11-27.png',
+                      'assets/imgs/therock_avatar.png',
                     ),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 68,
                 child: Center(
                   child: Text(
-                    'storiesList[index].userName',
+                    'highlights',
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),

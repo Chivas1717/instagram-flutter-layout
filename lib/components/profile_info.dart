@@ -7,7 +7,7 @@ class ProfileInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -121,7 +121,7 @@ class ProfileInfo extends StatelessWidget {
             ],
           ),
           Container(
-            margin: EdgeInsets.only(top: 10, left: 3),
+            margin: const EdgeInsets.only(top: 10, left: 3),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -129,11 +129,11 @@ class ProfileInfo extends StatelessWidget {
                   'Gamer',
                   style: TextStyle(color: Colors.blue[300]),
                 ),
-                Text(
+                const Text(
                   'Mark Hudzovskyi',
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
-                Text(
+                const Text(
                   'Studying at @kpi',
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
@@ -141,7 +141,7 @@ class ProfileInfo extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 10, bottom: 10),
+            margin: const EdgeInsets.only(top: 10, bottom: 10),
             child: Column(
               children: [
                 Container(
@@ -178,7 +178,7 @@ class ProfileInfo extends StatelessWidget {
                           color: Colors.grey[300],
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'Edite profile',
                             style: TextStyle(
@@ -196,7 +196,7 @@ class ProfileInfo extends StatelessWidget {
                           color: Colors.grey[300],
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'Share profile',
                             style: TextStyle(

@@ -22,7 +22,7 @@ class Saved extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: savedItems.isEmpty
-            ? Center(
+            ? const Center(
                 child: Text('No saved posts found'),
               )
             : Column(

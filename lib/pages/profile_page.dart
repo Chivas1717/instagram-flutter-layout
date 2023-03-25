@@ -22,6 +22,14 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const Center(
+          child: Text(
+            'markguddest',
+            style: TextStyle(
+                color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
+        leadingWidth: 150,
         iconTheme: const IconThemeData(color: Colors.black),
         shape: const Border(
           bottom: BorderSide(
@@ -84,7 +92,7 @@ class _ProfileState extends State<Profile> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ProfileInfo(),
+            const ProfileInfo(),
             ProfilePosts(),
           ],
         ),

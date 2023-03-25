@@ -66,7 +66,6 @@ class ProfilePosts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      // margin: EdgeInsets.only(left: 10, right: 10),
       children: [
         for (int i = 0; i < 8; i++)
           Container(
