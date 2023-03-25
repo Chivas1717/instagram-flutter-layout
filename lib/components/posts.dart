@@ -12,18 +12,26 @@ class Posts extends StatefulWidget {
 
 class _PostsState extends State<Posts> {
   final items = const <Item>[
-    Item(urlImage: 'Kirkjufell-volcano.png', userName: 'markguddest', likes: 7),
-    Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
-    Item(urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
-    Item(urlImage: 'Kirkjufell-volcano.png', userName: 'markguddest', likes: 7),
-    Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
-    Item(urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
-    Item(urlImage: 'Kirkjufell-volcano.png', userName: 'markguddest', likes: 7),
-    Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
-    Item(urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
-    Item(urlImage: 'Kirkjufell-volcano.png', userName: 'markguddest', likes: 7),
-    Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
-    Item(urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
+    Item(
+        id: 1,
+        urlImage: 'Kirkjufell-volcano.png',
+        userName: 'markguddest',
+        likes: 7),
+    Item(id: 1, urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
+    Item(id: 1, urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
+    Item(
+        id: 1,
+        urlImage: 'Kirkjufell-volcano.png',
+        userName: 'markguddest',
+        likes: 7),
+    Item(id: 1, urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
+    Item(id: 1, urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
+    Item(
+        id: 1,
+        urlImage: 'Kirkjufell-volcano.png',
+        userName: 'markguddest',
+        likes: 7),
+    Item(id: 1, urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
   ];
   @override
   Widget build(BuildContext context) {
@@ -44,6 +52,7 @@ class _PostsState extends State<Posts> {
           return Post(
             item: item,
             isHero: false,
+            updateSaved: () {},
           );
         },
       ),

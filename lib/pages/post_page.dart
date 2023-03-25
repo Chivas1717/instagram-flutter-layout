@@ -58,6 +58,7 @@ class _PostPageState extends State<PostPage> {
           Post(
             item: widget.item,
             isHero: true,
+            updateSaved: () {},
           )
         ],
       ),

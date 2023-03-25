@@ -3,10 +3,15 @@ import 'package:flutter_instagram_layout/pages/search_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Post extends StatefulWidget {
-  const Post({super.key, required this.item, required this.isHero});
+  const Post(
+      {super.key,
+      required this.item,
+      required this.isHero,
+      required this.updateSaved});
 
   final Item item;
   final bool isHero;
+  final Function updateSaved;
 
   @override
   State<Post> createState() => _PostState();
@@ -14,6 +19,7 @@ class Post extends StatefulWidget {
 
 class _PostState extends State<Post> {
   bool _isLiked = false;
+  bool _isSaved = false;
   final _usersAvatars = {
     'markguddest': 'mark_avatar.png',
     'Olegprosto': 'photo_2022-12-19_01-11-27.png',
@@ -23,6 +29,13 @@ class _PostState extends State<Post> {
   void _onClickLike() {
     setState(() {
       _isLiked = _isLiked ? false : true;
+    });
+  }
+
+  void _onClickSave() {
+    setState(() {
+      _isSaved = _isSaved ? false : true;
+      widget.updateSaved(_isSaved, widget.item);
     });
   }
 
@@ -147,9 +160,11 @@ class _PostState extends State<Post> {
                 IconButton(
                   padding: EdgeInsets.zero,
                   constraints: const BoxConstraints(),
-                  icon: const Icon(Icons.bookmark_border),
+                  icon: Icon(_isSaved
+                      ? Icons.bookmark_outlined
+                      : Icons.bookmark_border),
                   iconSize: 30,
-                  onPressed: () {},
+                  onPressed: _onClickSave,
                 ),
               ],
             ),

@@ -6,7 +6,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/stories.dart';
 
 class PostsStories extends StatefulWidget {
-  const PostsStories({super.key});
+  const PostsStories({super.key, required this.updateSaved});
+
+  final Function updateSaved;
 
   @override
   State<PostsStories> createState() => _PostsStoriesState();
@@ -17,18 +19,26 @@ class _PostsStoriesState extends State<PostsStories> {
   bool showbtn = false;
 
   final items = const <Item>[
-    Item(urlImage: 'Kirkjufell-volcano.png', userName: 'markguddest', likes: 7),
-    Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
-    Item(urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
-    Item(urlImage: 'Kirkjufell-volcano.png', userName: 'markguddest', likes: 7),
-    Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
-    Item(urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
-    Item(urlImage: 'Kirkjufell-volcano.png', userName: 'markguddest', likes: 7),
-    Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
-    Item(urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
-    Item(urlImage: 'Kirkjufell-volcano.png', userName: 'markguddest', likes: 7),
-    Item(urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
-    Item(urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
+    Item(
+        id: 1,
+        urlImage: 'Kirkjufell-volcano.png',
+        userName: 'markguddest',
+        likes: 7),
+    Item(id: 1, urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
+    Item(id: 1, urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
+    Item(
+        id: 1,
+        urlImage: 'Kirkjufell-volcano.png',
+        userName: 'markguddest',
+        likes: 7),
+    Item(id: 1, urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
+    Item(id: 1, urlImage: 'Niagara-falls.png', userName: 'therock', likes: 7),
+    Item(
+        id: 1,
+        urlImage: 'Kirkjufell-volcano.png',
+        userName: 'markguddest',
+        likes: 7),
+    Item(id: 1, urlImage: 'Piramids.png', userName: 'Olegprosto', likes: 7),
   ];
 
   @override
@@ -97,12 +107,13 @@ class _PostsStoriesState extends State<PostsStories> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const Stories(),
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 8; i++)
               SizedBox(
                 width: 392,
                 child: Post(
                   item: items[i],
                   isHero: false,
+                  updateSaved: widget.updateSaved,
                 ),
               ),
           ],

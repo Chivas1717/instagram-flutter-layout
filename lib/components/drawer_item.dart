@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
 class DrawerItem extends StatelessWidget {
-  const DrawerItem({super.key, required this.icon, required this.title});
+  const DrawerItem({
+    super.key,
+    required this.icon,
+    required this.title,
+  });
 
   final Icon icon;
   final String title;

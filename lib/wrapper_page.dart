@@ -18,12 +18,23 @@ class _WrapperPage extends State<WrapperPage>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   int _selectedIndex = 0;
   late TabController _controller;
+  List<Item> savedItems = <Item>[];
+
+  void _updateSaved(bool isSaved, Item item) {
+    setState(() {
+      if (isSaved) {
+        savedItems.add(item);
+      } else {
+        savedItems.remove(item);
+      }
+    });
+  }
 
   @override
   // ignore: must_call_super
   void initState() {
     super.initState();
-    _controller = TabController(length: _widgetOptions.length, vsync: this);
+    _controller = TabController(length: _widgetOptions().length, vsync: this);
     _controller.addListener(() {
       setState(() {
         _selectedIndex = _controller.index;
@@ -47,22 +58,25 @@ class _WrapperPage extends State<WrapperPage>
     });
   }
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    PostsStories(),
-    Search(),
-    Create(),
-    Reels(),
-    Profile()
-  ];
+  void _test() {}
+
+  List<Widget> _widgetOptions() => [
+        PostsStories(updateSaved: _updateSaved),
+        const Search(),
+        const Create(),
+        const Reels(),
+        Profile(updateSaved: _updateSaved, savedItems: savedItems),
+      ];
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> widgetOptions = _widgetOptions();
     return SizedBox(
       child: Scaffold(
         backgroundColor: Colors.white,
         body: TabBarView(
           controller: _controller,
-          children: _widgetOptions,
+          children: widgetOptions,
         ),
         // _widgetOptions.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
