@@ -66,8 +66,9 @@ class _StoriesState extends State<Stories> {
                   child: CircleAvatar(
                     radius: 29,
                     backgroundColor: Colors.transparent,
-                    backgroundImage:
-                        AssetImage('assets/imgs/photo_2022-12-19_01-11-27.png'),
+                    backgroundImage: AssetImage(
+                      'assets/imgs/photo_2022-12-19_01-11-27.png',
+                    ),
                   ),
                 ),
               ),

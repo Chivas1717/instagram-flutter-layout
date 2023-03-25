@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/components/drawer_item.dart';
+import 'package:flutter_instagram_layout/components/profile_info.dart';
 import 'package:flutter_instagram_layout/pages/saved_page.dart';
 import 'package:flutter_instagram_layout/pages/search_page.dart';
+
+import '../components/profile_posts.dart';
 
 class Profile extends StatefulWidget {
   const Profile(
@@ -49,7 +52,7 @@ class _ProfileState extends State<Profile> {
               ),
               const DrawerItem(
                 icon: Icon(Icons.insights_outlined),
-                title: 'insights',
+                title: 'Insights',
               ),
               const DrawerItem(
                 icon: Icon(Icons.qr_code_rounded),
@@ -78,7 +81,14 @@ class _ProfileState extends State<Profile> {
           ),
         ),
       ),
-      body: const Center(child: Text('profile')),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ProfileInfo(),
+            ProfilePosts(),
+          ],
+        ),
+      ),
     );
   }
 }
