@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Create extends StatefulWidget {
-  const Create({super.key});
+class CreateScreen extends StatefulWidget {
+  const CreateScreen({super.key});
 
   @override
-  State<Create> createState() => _CreateState();
+  State<CreateScreen> createState() => _CreateScreenState();
 }
 
-class _CreateState extends State<Create> {
+class _CreateScreenState extends State<CreateScreen> {
   @override
   Widget build(BuildContext context) {
     return const Center(child: Text('create'));

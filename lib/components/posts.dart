@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/components/post.dart';
 
+import '../models/story_model.dart';
 import '../pages/search_page.dart';
 
 class Posts extends StatefulWidget {

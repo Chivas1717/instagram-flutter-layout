@@ -4,6 +4,9 @@ import 'package:flutter_instagram_layout/pages/posts_stories_page.dart';
 import 'package:flutter_instagram_layout/pages/profile_page.dart';
 import 'package:flutter_instagram_layout/pages/reels_page.dart';
 import 'package:flutter_instagram_layout/pages/search_page.dart';
+import 'package:provider/provider.dart';
+
+import 'models/story_model.dart';
 
 class WrapperPage extends StatefulWidget {
   const WrapperPage({super.key, required this.title});
@@ -61,7 +64,7 @@ class _WrapperPage extends State<WrapperPage>
   List<Widget> _widgetOptions() => [
         PostsStories(updateSaved: _updateSaved),
         Search(),
-        const Create(),
+        CreateScreen(),
         const Reels(),
         Profile(updateSaved: _updateSaved, savedItems: savedItems),
       ];
@@ -69,61 +72,64 @@ class _WrapperPage extends State<WrapperPage>
   @override
   Widget build(BuildContext context) {
     final List<Widget> widgetOptions = _widgetOptions();
-    return SizedBox(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: TabBarView(
-          controller: _controller,
-          children: widgetOptions,
-        ),
-        // _widgetOptions.elementAt(_selectedIndex),
-        bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.grey.shade700,
-          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
-          unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
-          type: BottomNavigationBarType.fixed,
-          items: [
-            BottomNavigationBarItem(
-              icon:
-                  Icon(_selectedIndex == 0 ? Icons.home : Icons.home_outlined),
-              label: 'home',
-            ),
-            BottomNavigationBarItem(
-              icon: _selectedIndex == 1
-                  ? const Icon(
-                      Icons.search,
-                      color: Colors.black,
-                    )
-                  : const Icon(Icons.search),
-              label: "search",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                _selectedIndex == 2 ? Icons.add_box : Icons.add_box_outlined,
+    return ChangeNotifierProvider(
+      create: (context) => StoryModel(),
+      child: SizedBox(
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: TabBarView(
+            controller: _controller,
+            children: widgetOptions,
+          ),
+          // _widgetOptions.elementAt(_selectedIndex),
+          bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: Colors.black,
+            unselectedItemColor: Colors.grey.shade700,
+            selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+            unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+            type: BottomNavigationBarType.fixed,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                    _selectedIndex == 0 ? Icons.home : Icons.home_outlined),
+                label: 'home',
               ),
-              label: "add",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                _selectedIndex == 3 ? Icons.movie : Icons.movie_outlined,
+              BottomNavigationBarItem(
+                icon: _selectedIndex == 1
+                    ? const Icon(
+                        Icons.search,
+                        color: Colors.black,
+                      )
+                    : const Icon(Icons.search),
+                label: "search",
               ),
-              label: "reels",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                _selectedIndex == 4
-                    ? Icons.account_circle
-                    : Icons.account_circle_outlined,
+              BottomNavigationBarItem(
+                icon: Icon(
+                  _selectedIndex == 2 ? Icons.add_box : Icons.add_box_outlined,
+                ),
+                label: "add",
               ),
-              label: "profile",
-            ),
-          ],
-          iconSize: 30,
-          currentIndex: _selectedIndex,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          onTap: _onClickTab,
+              BottomNavigationBarItem(
+                icon: Icon(
+                  _selectedIndex == 3 ? Icons.movie : Icons.movie_outlined,
+                ),
+                label: "reels",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  _selectedIndex == 4
+                      ? Icons.account_circle
+                      : Icons.account_circle_outlined,
+                ),
+                label: "profile",
+              ),
+            ],
+            iconSize: 30,
+            currentIndex: _selectedIndex,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            onTap: _onClickTab,
+          ),
         ),
       ),
     );

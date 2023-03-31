@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/pages/search_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../models/story_model.dart';
+
 class Post extends StatefulWidget {
   const Post(
       {super.key,

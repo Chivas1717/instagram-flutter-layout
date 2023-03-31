@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/components/stories.dart';
 
+import '../models/story_model.dart';
+
 class HighlightStories extends StatelessWidget {
   final storiesList = [
     Story(userName: 'Cat', image: 'mark_avatar.png'),
