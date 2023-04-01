@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_instagram_layout/bloc/posts_bloc_bloc.dart';
+import 'package:flutter_instagram_layout/bloc/posts_bloc_state.dart';
 import 'package:flutter_instagram_layout/components/post.dart';
-import 'package:flutter_instagram_layout/pages/search_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../components/stories.dart';
+import '../models/post_model.dart';
 
 class PostsStories extends StatefulWidget {
-  const PostsStories({super.key, required this.updateSaved});
-
-  final Function updateSaved;
+  const PostsStories({super.key});
 
   @override
   State<PostsStories> createState() => _PostsStoriesState();
@@ -17,65 +18,6 @@ class PostsStories extends StatefulWidget {
 class _PostsStoriesState extends State<PostsStories> {
   ScrollController scrollController = ScrollController();
   bool showbtn = false;
-
-  final items = <Item>[
-    Item(
-      id: 1,
-      urlImage: 'Kirkjufell-volcano.png',
-      userName: 'markguddest',
-      likes: 7,
-      isSaved: false,
-    ),
-    Item(
-      id: 1,
-      urlImage: 'Piramids.png',
-      userName: 'Olegprosto',
-      likes: 7,
-      isSaved: false,
-    ),
-    Item(
-      id: 1,
-      urlImage: 'Niagara-falls.png',
-      userName: 'therock',
-      likes: 7,
-      isSaved: false,
-    ),
-    Item(
-      id: 1,
-      urlImage: 'Kirkjufell-volcano.png',
-      userName: 'markguddest',
-      likes: 7,
-      isSaved: false,
-    ),
-    Item(
-      id: 1,
-      urlImage: 'Piramids.png',
-      userName: 'Olegprosto',
-      likes: 7,
-      isSaved: false,
-    ),
-    Item(
-      id: 1,
-      urlImage: 'Niagara-falls.png',
-      userName: 'therock',
-      likes: 7,
-      isSaved: false,
-    ),
-    Item(
-      id: 1,
-      urlImage: 'Kirkjufell-volcano.png',
-      userName: 'markguddest',
-      likes: 7,
-      isSaved: false,
-    ),
-    Item(
-      id: 1,
-      urlImage: 'Piramids.png',
-      userName: 'Olegprosto',
-      likes: 7,
-      isSaved: false,
-    ),
-  ];
 
   @override
   void initState() {
@@ -139,20 +81,23 @@ class _PostsStoriesState extends State<PostsStories> {
       ),
       body: SingleChildScrollView(
         controller: scrollController,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const Stories(),
-            for (int i = 0; i < 8; i++)
-              SizedBox(
-                width: 392,
-                child: Post(
-                  item: items[i],
-                  isHero: false,
-                  updateSaved: widget.updateSaved,
-                ),
-              ),
-          ],
+        child: BlocBuilder<PostsBloc, PostsState>(
+          builder: (context, state) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Stories(),
+                for (int i = 0; i < state.posts.length; i++)
+                  SizedBox(
+                    width: 392,
+                    child: Post(
+                      item: state.posts[i],
+                      isHero: false,
+                    ),
+                  ),
+              ],
+            );
+          },
         ),
       ),
       floatingActionButton: AnimatedOpacity(

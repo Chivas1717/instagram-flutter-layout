@@ -5,11 +5,12 @@ import '../models/story_model.dart';
 
 class HighlightStories extends StatelessWidget {
   final storiesList = [
-    Story(userName: 'Cat', image: 'mark_avatar.png'),
-    Story(userName: 'Life', image: 'mark_avatar.png'),
-    Story(userName: 'School', image: 'mark_avatar.png'),
-    Story(userName: 'Trips', image: 'mark_avatar.png'),
-    Story(userName: 'Friends', image: 'mark_avatar.png'),
+    Story(id: 1, userName: 'Cat', image: 'mark_avatar.png', isWatched: true),
+    Story(id: 1, userName: 'Life', image: 'mark_avatar.png', isWatched: true),
+    Story(id: 1, userName: 'School', image: 'mark_avatar.png', isWatched: true),
+    Story(id: 1, userName: 'Trips', image: 'mark_avatar.png', isWatched: true),
+    Story(
+        id: 1, userName: 'Friends', image: 'mark_avatar.png', isWatched: true),
   ];
   HighlightStories({super.key});
 

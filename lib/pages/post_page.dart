@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_instagram_layout/pages/search_page.dart';
 
 import '../components/post.dart';
+import '../models/post_model.dart';
 
 class PostPage extends StatefulWidget {
   const PostPage({super.key, required this.item});
@@ -58,7 +58,6 @@ class _PostPageState extends State<PostPage> {
           Post(
             item: widget.item,
             isHero: true,
-            updateSaved: () {},
           )
         ],
       ),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/components/post.dart';
 
-import '../models/story_model.dart';
-import '../pages/search_page.dart';
+import '../models/post_model.dart';
 
 class Posts extends StatefulWidget {
   const Posts({super.key});
@@ -89,7 +88,6 @@ class _PostsState extends State<Posts> {
           return Post(
             item: item,
             isHero: false,
-            updateSaved: () {},
           );
         },
       ),

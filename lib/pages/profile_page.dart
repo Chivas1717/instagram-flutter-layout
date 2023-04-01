@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/components/drawer_item.dart';
 import 'package:flutter_instagram_layout/components/profile_info.dart';
 import 'package:flutter_instagram_layout/pages/saved_page.dart';
-import 'package:flutter_instagram_layout/pages/search_page.dart';
 
 import '../components/profile_posts.dart';
+import '../models/post_model.dart';
 
 class Profile extends StatefulWidget {
-  const Profile(
-      {super.key, required this.updateSaved, required this.savedItems});
-
-  final Function updateSaved;
-  final List<Item> savedItems;
+  const Profile({super.key});
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -72,10 +68,7 @@ class _ProfileState extends State<Profile> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return Saved(
-                          savedItems: widget.savedItems,
-                          updateSaved: widget.updateSaved,
-                        );
+                        return Saved();
                       },
                     ),
                   );

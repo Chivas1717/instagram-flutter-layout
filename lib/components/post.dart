@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_instagram_layout/bloc/posts_bloc_bloc.dart';
+import 'package:flutter_instagram_layout/bloc/posts_bloc_event.dart';
 import 'package:flutter_instagram_layout/pages/search_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../models/story_model.dart';
+import '../models/post_model.dart';
 
 class Post extends StatefulWidget {
-  const Post(
-      {super.key,
-      required this.item,
-      required this.isHero,
-      required this.updateSaved});
+  const Post({
+    super.key,
+    required this.item,
+    required this.isHero,
+  });
 
   final Item item;
   final bool isHero;
-  final Function updateSaved;
 
   @override
   State<Post> createState() => _PostState();
@@ -36,7 +38,7 @@ class _PostState extends State<Post> {
   void _onClickSave() {
     setState(() {
       widget.item.isSaved = widget.item.isSaved ? false : true;
-      widget.updateSaved(widget.item.isSaved, widget.item);
+      context.read<PostsBloc>().add(UpdateSavedPostsEvent(post: widget.item));
     });
   }
 
@@ -201,115 +203,5 @@ class _PostState extends State<Post> {
         ],
       ),
     );
-    // Scaffold(
-    //   body: Column(
-    //     children: [
-    //       Container(
-    //         padding: const EdgeInsets.all(8),
-    //         child: Row(
-    //           children: [
-    //             Container(
-    //               width: 50,
-    //               height: 50,
-    //               padding: const EdgeInsets.all(3),
-    //               decoration: const BoxDecoration(
-    //                 shape: BoxShape.circle,
-    //                 gradient: LinearGradient(colors: [
-    //                   Color(0xFFfeda75),
-    //                   Color(0xFFfa7e1e),
-    //                   Color(0xFFd62976),
-    //                   Color(0xFF962fbf),
-    //                   Color(0xFF4f5bd5),
-    //                 ], begin: Alignment.bottomLeft, end: Alignment.topRight),
-    //               ),
-    //               child: const CircleAvatar(
-    //                 backgroundColor: Colors.white,
-    //                 radius: 25,
-    //                 child: CircleAvatar(
-    //                   radius: 20,
-    //                   backgroundColor: Colors.transparent,
-    //                   backgroundImage:
-    //                       AssetImage('assets/imgs/mark_avatar.png'),
-    //                 ),
-    //               ),
-    //             ),
-    //             Container(
-    //               margin: const EdgeInsets.only(left: 10),
-    //               child: Text(
-    //                 widget.item.userName,
-    //                 style: const TextStyle(
-    //                     fontSize: 16, fontWeight: FontWeight.bold),
-    //               ),
-    //             ),
-    //             Expanded(
-    //               child: Container(),
-    //             ),
-    //             const Icon(
-    //               Icons.more_horiz,
-    //               size: 30,
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //       Container(
-    //         alignment: Alignment.center,
-    //         child: Image.asset('assets/imgs/Kirkjufell-volcano.png',
-    //             height: 400,
-    //             width: MediaQuery.of(context).size.width - 10,
-    //             fit: BoxFit.cover),
-    //       ),
-    //       Container(
-    //         padding: const EdgeInsets.all(8),
-    //         child: Row(
-    //           children: [
-    //             Container(
-    //               margin: const EdgeInsets.only(left: 5),
-    //               width: 110,
-    //               child: Row(
-    //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //                 children: [
-    //                   IconButton(
-    //                     padding: EdgeInsets.zero,
-    //                     constraints: const BoxConstraints(),
-    //                     icon: _isLiked
-    //                         ? const Icon(
-    //                             Icons.favorite,
-    //                             color: Colors.red,
-    //                           )
-    //                         : const Icon(Icons.favorite_border),
-    //                     iconSize: 31,
-    //                     onPressed: _onClickLike,
-    //                   ),
-    //                   IconButton(
-    //                     padding: EdgeInsets.zero,
-    //                     constraints: const BoxConstraints(),
-    //                     icon: const Icon(FontAwesomeIcons.comment),
-    //                     iconSize: 27,
-    //                     onPressed: () {},
-    //                   ),
-    //                   IconButton(
-    //                     padding: EdgeInsets.zero,
-    //                     constraints: const BoxConstraints(),
-    //                     icon: const Icon(FontAwesomeIcons.paperPlane),
-    //                     iconSize: 27,
-    //                     onPressed: () {},
-    //                   ),
-    //                 ],
-    //               ),
-    //             ),
-    //             Expanded(child: Container()),
-    //             IconButton(
-    //               padding: EdgeInsets.zero,
-    //               constraints: const BoxConstraints(),
-    //               icon: const Icon(Icons.save_alt),
-    //               iconSize: 30,
-    //               onPressed: () {},
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //     ],
-    //   ),
-    // );
   }
 }

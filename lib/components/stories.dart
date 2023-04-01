@@ -4,9 +4,14 @@ import 'package:provider/provider.dart';
 
 import '../models/story_model.dart';
 
-class Stories extends StatelessWidget {
+class Stories extends StatefulWidget {
   const Stories({super.key});
 
+  @override
+  State<Stories> createState() => _StoriesState();
+}
+
+class _StoriesState extends State<Stories> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,17 +28,6 @@ class Stories extends StatelessWidget {
       ),
       child: Consumer<StoryModel>(
         builder: (context, story, child) {
-          story.addMany([
-            Story(userName: 'markguddest', image: 'mark_avatar.png'),
-            Story(userName: 'markguddest', image: 'mark_avatar.png'),
-            Story(userName: 'markguddest', image: 'mark_avatar.png'),
-            Story(userName: 'markguddest', image: 'mark_avatar.png'),
-            Story(userName: 'markguddest', image: 'mark_avatar.png'),
-            Story(userName: 'markguddest', image: 'mark_avatar.png'),
-            Story(userName: 'markguddest', image: 'mark_avatar.png'),
-            Story(userName: 'markguddest', image: 'mark_avatar.png'),
-          ]);
-
           return ListView.builder(
             itemCount: story.items.length,
             scrollDirection: Axis.horizontal,
@@ -41,8 +35,11 @@ class Stories extends StatelessWidget {
               return GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const StoryPage();
+                    return StoryPage(
+                      index: index,
+                    );
                   }));
+                  story.makeWatched(index);
                 },
                 child: Column(
                   children: [
@@ -50,21 +47,29 @@ class Stories extends StatelessWidget {
                       width: 68,
                       height: 68,
                       padding: const EdgeInsets.all(3),
-                      margin:
-                          const EdgeInsets.only(left: 5, right: 5, bottom: 4),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: LinearGradient(
-                            colors: [
-                              Color(0xFFfeda75),
-                              Color(0xFFfa7e1e),
-                              Color(0xFFd62976),
-                              Color(0xFF962fbf),
-                              Color(0xFF4f5bd5),
-                            ],
-                            begin: Alignment.bottomLeft,
-                            end: Alignment.topRight),
+                      margin: const EdgeInsets.only(
+                        left: 5,
+                        right: 5,
+                        bottom: 4,
                       ),
+                      decoration: story.items[index].isWatched
+                          ? const BoxDecoration(
+                              shape: BoxShape.circle,
+                            )
+                          : const BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                colors: [
+                                  Color(0xFFfeda75),
+                                  Color(0xFFfa7e1e),
+                                  Color(0xFFd62976),
+                                  Color(0xFF962fbf),
+                                  Color(0xFF4f5bd5),
+                                ],
+                                begin: Alignment.bottomLeft,
+                                end: Alignment.topRight,
+                              ),
+                            ),
                       child: CircleAvatar(
                         backgroundColor: Colors.white,
                         radius: 34,
@@ -77,11 +82,6 @@ class Stories extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // Text(
-                    //   'Olegggggg'.length > 8
-                    //       ? 'Olegggggg'.replaceRange(7, 'Olegggggg'.length, '...')
-                    //       : 'Olegggggg',
-                    // )
                     SizedBox(
                       width: 68,
                       child: Center(

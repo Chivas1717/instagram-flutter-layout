@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../pages/search_page.dart';
+import '../models/post_model.dart';
 
 class ProfilePosts extends StatelessWidget {
   ProfilePosts({super.key});

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/components/recomendations_block.dart';
 
+import '../models/post_model.dart';
+
 class Search extends StatelessWidget {
   Search({super.key});
 
@@ -141,20 +143,4 @@ class Search extends StatelessWidget {
       ),
     );
   }
-}
-
-class Item {
-  final int id;
-  final String urlImage;
-  final String userName;
-  final int likes;
-  late bool isSaved;
-
-  Item({
-    required this.id,
-    required this.urlImage,
-    required this.userName,
-    required this.likes,
-    required this.isSaved,
-  });
 }
