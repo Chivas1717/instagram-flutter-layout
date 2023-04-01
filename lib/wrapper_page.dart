@@ -5,8 +5,6 @@ import 'package:flutter_instagram_layout/pages/profile_page.dart';
 import 'package:flutter_instagram_layout/pages/reels_page.dart';
 import 'package:flutter_instagram_layout/pages/search_page.dart';
 
-import 'models/post_model.dart';
-
 class WrapperPage extends StatefulWidget {
   const WrapperPage({super.key, required this.title});
 
@@ -61,11 +59,11 @@ class _WrapperPage extends State<WrapperPage>
   }
 
   List<Widget> _widgetOptions() => [
-        PostsStories(),
+        const PostsStories(),
         Search(),
-        CreateScreen(),
+        const CreateScreen(),
         const Reels(),
-        Profile(),
+        const Profile(),
       ];
 
   @override

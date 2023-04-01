@@ -1,16 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_instagram_layout/components/stories.dart';
 
 import '../models/story_model.dart';
 
 class HighlightStories extends StatelessWidget {
   final storiesList = [
-    Story(id: 1, userName: 'Cat', image: 'mark_avatar.png', isWatched: true),
-    Story(id: 1, userName: 'Life', image: 'mark_avatar.png', isWatched: true),
-    Story(id: 1, userName: 'School', image: 'mark_avatar.png', isWatched: true),
-    Story(id: 1, userName: 'Trips', image: 'mark_avatar.png', isWatched: true),
     Story(
-        id: 1, userName: 'Friends', image: 'mark_avatar.png', isWatched: true),
+      id: 1,
+      userName: 'Cat',
+      image: 'mark_avatar.png',
+      isWatched: true,
+      content: 'Niagara-falls.png',
+    ),
+    Story(
+      id: 1,
+      userName: 'Life',
+      image: 'mark_avatar.png',
+      isWatched: true,
+      content: 'Niagara-falls.png',
+    ),
+    Story(
+      id: 1,
+      userName: 'School',
+      image: 'mark_avatar.png',
+      isWatched: true,
+      content: 'Niagara-falls.png',
+    ),
+    Story(
+      id: 1,
+      userName: 'Trips',
+      image: 'mark_avatar.png',
+      isWatched: true,
+      content: 'Niagara-falls.png',
+    ),
+    Story(
+      id: 1,
+      userName: 'Friends',
+      image: 'mark_avatar.png',
+      isWatched: true,
+      content: 'Niagara-falls.png',
+    ),
   ];
   HighlightStories({super.key});
 

@@ -53,8 +53,11 @@ class _StoriesState extends State<Stories> {
                         bottom: 4,
                       ),
                       decoration: story.items[index].isWatched
-                          ? const BoxDecoration(
+                          ? BoxDecoration(
                               shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.grey,
+                              ),
                             )
                           : const BoxDecoration(
                               shape: BoxShape.circle,

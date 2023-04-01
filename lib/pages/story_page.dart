@@ -14,7 +14,6 @@ class StoryPage extends StatefulWidget {
 }
 
 class _StoryPageState extends State<StoryPage> with TickerProviderStateMixin {
-  int _selectedStoryIndex = 0;
   late TabController _storiesController;
 
   List<Widget> _storiesOptions = [];
@@ -24,15 +23,9 @@ class _StoryPageState extends State<StoryPage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _storiesController = TabController(
-      length: _storiesOptions.length,
+      length: 9,
+      initialIndex: widget.index,
       vsync: this,
-    );
-    _storiesController.addListener(
-      () {
-        setState(() {
-          _selectedStoryIndex = _storiesController.index;
-        });
-      },
     );
   }
 
@@ -44,7 +37,6 @@ class _StoryPageState extends State<StoryPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    _storiesController.index = widget.index;
     _storiesOptions = Provider.of<StoryModel>(context, listen: true)
         .items
         .map((story) => StoryTab(
@@ -52,23 +44,35 @@ class _StoryPageState extends State<StoryPage> with TickerProviderStateMixin {
             ))
         .toList();
 
+    _storiesController.dispose();
+
+    int prev = _storiesController.index;
+
     _storiesController = TabController(
       length: _storiesOptions.length,
-      initialIndex: widget.index,
+      initialIndex: prev,
       vsync: this,
     );
-    // _storiesController.addListener(() {
-    //   if (_storiesController.indexIsChanging)
-    //     Provider.of<StoryModel>(context, listen: false)
-    //         .makeWatched(_storiesController.index);
-    // });
 
-    final List<Widget> widgetOptions = _storiesOptions;
+    _storiesController.addListener(
+      () {
+        if (!_storiesController.indexIsChanging) {
+          Future.delayed(
+            const Duration(milliseconds: 10),
+            () {
+              Provider.of<StoryModel>(context, listen: false)
+                  .makeWatched(_storiesController.index);
+            },
+          );
+        }
+      },
+    );
+
     return Consumer<StoryModel>(builder: (context, story, child) {
       return Scaffold(
         body: TabBarView(
           controller: _storiesController,
-          children: widgetOptions,
+          children: _storiesOptions,
         ),
       );
     });

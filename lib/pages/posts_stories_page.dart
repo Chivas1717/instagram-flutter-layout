@@ -86,7 +86,7 @@ class _PostsStoriesState extends State<PostsStories> {
             return Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Stories(),
+                const Stories(),
                 for (int i = 0; i < state.posts.length; i++)
                   SizedBox(
                     width: 392,
