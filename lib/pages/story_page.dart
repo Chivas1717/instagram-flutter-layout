@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/components/story.dart';
 import 'package:provider/provider.dart';
 
-import '../models/story_model.dart';
+import '../providers/story_model.dart';
 
 class StoryPage extends StatefulWidget {
   const StoryPage({super.key, required this.index});

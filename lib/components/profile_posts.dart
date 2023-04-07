@@ -68,7 +68,7 @@ class ProfilePosts extends StatelessWidget {
     return Column(
       children: [
         for (int i = 0; i < 8; i++)
-          Container(
+          SizedBox(
             height: 122,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

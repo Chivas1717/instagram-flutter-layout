@@ -1,34 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_instagram_layout/bloc/posts_bloc_bloc.dart';
+import 'package:flutter_instagram_layout/providers/theme_settings.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'models/story_model.dart';
+import 'providers/story_model.dart';
 import 'my_home_page.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences.setMockInitialValues({});
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  final isThemeDark = sharedPreferences.getBool('is_dark') ?? false;
+
+  runApp(MyApp(isThemeDark: isThemeDark));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool isThemeDark;
+  const MyApp({super.key, required this.isThemeDark});
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (_) => StoryModel(),
-        child: BlocProvider(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => StoryModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ThemeSettings(isThemeDark),
+        )
+      ],
+      builder: (context, child) {
+        return BlocProvider(
           create: (context) => PostsBloc(),
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
-            theme: ThemeData(
-                primarySwatch: Colors.blue,
-                appBarTheme: const AppBarTheme(
-                  elevation: 0,
-                )),
+            theme: Provider.of<ThemeSettings>(context).selectedTheme,
+            // darkTheme: ThemeData(primarySwatch: Colors.grey),
             home: const MyHomePage(title: 'Flutter Demo Home Page'),
           ),
-        ));
+        );
+      },
+    );
   }
 }

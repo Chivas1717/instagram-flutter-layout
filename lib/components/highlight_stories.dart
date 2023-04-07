@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/story_model.dart';
+import '../providers/story_model.dart';
 
 class HighlightStories extends StatelessWidget {
   final storiesList = [

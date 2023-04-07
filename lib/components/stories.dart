@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/pages/story_page.dart';
 import 'package:provider/provider.dart';
 
-import '../models/story_model.dart';
+import '../providers/story_model.dart';
+import '../providers/theme_settings.dart';
 
 class Stories extends StatefulWidget {
   const Stories({super.key});
@@ -19,12 +20,14 @@ class _StoriesState extends State<Stories> {
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.only(top: 10.0),
       padding: const EdgeInsets.only(bottom: 10),
-      decoration: const BoxDecoration(
-        border: Border(
+      decoration: BoxDecoration(
+        border: const Border(
           bottom:
               BorderSide(color: Color.fromARGB(255, 201, 199, 195), width: 0.4),
         ),
-        color: Colors.white,
+        color: Provider.of<ThemeSettings>(context, listen: false).isDark == true
+            ? Colors.grey[800]
+            : Colors.white,
       ),
       child: Consumer<StoryModel>(
         builder: (context, story, child) {

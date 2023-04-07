@@ -105,10 +105,10 @@ class Story {
   bool isWatched;
 
   Story({
-    required int this.id,
-    required String this.userName,
-    required String this.image,
-    required String this.content,
-    required bool this.isWatched,
+    required this.id,
+    required this.userName,
+    required this.image,
+    required this.content,
+    required this.isWatched,
   });
 }

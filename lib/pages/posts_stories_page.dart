@@ -3,10 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_instagram_layout/bloc/posts_bloc_bloc.dart';
 import 'package:flutter_instagram_layout/bloc/posts_bloc_state.dart';
 import 'package:flutter_instagram_layout/components/post.dart';
+import 'package:flutter_instagram_layout/providers/theme_settings.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 import '../components/stories.dart';
-import '../models/post_model.dart';
 
 class PostsStories extends StatefulWidget {
   const PostsStories({super.key});
@@ -18,6 +19,11 @@ class PostsStories extends StatefulWidget {
 class _PostsStoriesState extends State<PostsStories> {
   ScrollController scrollController = ScrollController();
   bool showbtn = false;
+
+  void _switchTheme() {
+    final settings = Provider.of<ThemeSettings>(context, listen: false);
+    settings.switchTheme();
+  }
 
   @override
   void initState() {
@@ -39,10 +45,11 @@ class _PostsStoriesState extends State<PostsStories> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(
-          FontAwesomeIcons.instagram,
+        leading: IconButton(
+          icon: Icon(FontAwesomeIcons.instagram),
           color: Colors.black,
-          size: 33,
+          iconSize: 33,
+          onPressed: _switchTheme,
         ),
         actions: [
           Container(

@@ -4,7 +4,6 @@ import 'package:flutter_instagram_layout/components/profile_info.dart';
 import 'package:flutter_instagram_layout/pages/saved_page.dart';
 
 import '../components/profile_posts.dart';
-import '../models/post_model.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -68,7 +67,7 @@ class _ProfileState extends State<Profile> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return Saved();
+                        return const Saved();
                       },
                     ),
                   );
