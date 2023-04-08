@@ -4,13 +4,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ThemeSettings extends ChangeNotifier {
   ThemeData _selectedTheme = ThemeData.dark();
   ThemeData get selectedTheme => _selectedTheme;
-  bool _isDark = false;
-  bool get isDark => _isDark;
+  // bool _isDark = false;
+  // bool get isDark => _isDark;
 
   ThemeSettings(bool isThemeDark) {
     if (isThemeDark) {
       _selectedTheme = ThemeData.dark();
-      // sharedPreferences.setBool('is_dark', false);
     } else {
       _selectedTheme = ThemeData.light().copyWith(
         appBarTheme: const AppBarTheme(
@@ -34,11 +33,11 @@ class ThemeSettings extends ChangeNotifier {
           ),
         ),
       );
-      _isDark = false;
+      // _isDark = false;
       sharedPreferences.setBool('is_dark', false);
     } else {
       _selectedTheme = ThemeData.dark();
-      _isDark = true;
+      // _isDark = true;
       sharedPreferences.setBool('is_dark', true);
     }
     notifyListeners();

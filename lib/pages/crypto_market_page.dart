@@ -83,7 +83,7 @@ class CryptoMarket extends StatelessWidget {
                                 radius: 29,
                                 backgroundColor: Colors.transparent,
                                 backgroundImage: AssetImage(
-                                  'assets/imgs/crypto/${coinAvatars[state.coins[index].assetId!]}',
+                                  'assets/imgs/crypto/${coinAvatars[coins[index].assetId!]}',
                                 ),
                               ),
                             ),
@@ -91,7 +91,7 @@ class CryptoMarket extends StatelessWidget {
                               width: 10,
                             ),
                             Text(
-                              state.coins[index].assetId!,
+                              coins[index].assetId!,
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 14,
@@ -101,7 +101,7 @@ class CryptoMarket extends StatelessWidget {
                               width: 30,
                             ),
                             Text(
-                              '${state.coins[index].priceUsd!} \$',
+                              '${coins[index].priceUsd!} \$',
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 14,

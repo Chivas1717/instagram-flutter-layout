@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: Provider.of<ThemeSettings>(context).selectedTheme,
-            // darkTheme: ThemeData(primarySwatch: Colors.grey),
             home: const MyHomePage(title: 'Flutter Demo Home Page'),
           ),
         );
