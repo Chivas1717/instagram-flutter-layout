@@ -9,7 +9,9 @@ class ProfileInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool themeDark = Provider.of<ThemeSettings>(context, listen: true).isDark;
+    bool themeDark =
+        Provider.of<ThemeSettings>(context, listen: true).selectedTheme ==
+            ThemeData.dark();
 
     return Container(
       padding: const EdgeInsets.only(top: 15, left: 15, right: 15),

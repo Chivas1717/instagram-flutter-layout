@@ -18,7 +18,9 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    bool themeDark = Provider.of<ThemeSettings>(context, listen: true).isDark;
+    bool themeDark =
+        Provider.of<ThemeSettings>(context, listen: true).selectedTheme ==
+            ThemeData.dark();
 
     return Scaffold(
       appBar: AppBar(

@@ -70,7 +70,9 @@ class _WrapperPage extends State<WrapperPage>
 
   @override
   Widget build(BuildContext context) {
-    bool themeDark = Provider.of<ThemeSettings>(context, listen: true).isDark;
+    bool themeDark =
+        Provider.of<ThemeSettings>(context, listen: true).selectedTheme ==
+            ThemeData.dark();
     Color iconColor = themeDark ? Colors.white : Colors.black;
 
     final List<Widget> widgetOptions = _widgetOptions();

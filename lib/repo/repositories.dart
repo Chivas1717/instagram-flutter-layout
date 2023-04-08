@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_instagram_layout/models/crypto_model.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 
 class CryptoRepository {
   // String apiKey = '0F8B9210-A0D0-43BA-961D-70787B37E62D';

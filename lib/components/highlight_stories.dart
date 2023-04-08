@@ -46,7 +46,9 @@ class HighlightStories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool themeDark = Provider.of<ThemeSettings>(context, listen: true).isDark;
+    bool themeDark =
+        Provider.of<ThemeSettings>(context, listen: true).selectedTheme ==
+            ThemeData.dark();
 
     return Container(
       height: 99,

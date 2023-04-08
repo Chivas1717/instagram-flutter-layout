@@ -30,15 +30,15 @@ class CryptoMarket extends StatelessWidget {
             }
 
             if (state is CryptoLoadingState) {
-              return Scaffold(
-                body: const Center(
+              return const Scaffold(
+                body: Center(
                   child: CircularProgressIndicator(),
                 ),
               );
             }
             if (state is CryptoErrorState) {
-              return Scaffold(
-                body: const Center(
+              return const Scaffold(
+                body: Center(
                   child: Text("Error"),
                 ),
               );
@@ -60,7 +60,7 @@ class CryptoMarket extends StatelessWidget {
                       ),
                     ),
                   ),
-                  title: Text('Crypto Market'),
+                  title: const Text('Crypto Market'),
                   actions: [
                     IconButton(
                       onPressed: refreshPrices,
@@ -72,8 +72,8 @@ class CryptoMarket extends StatelessWidget {
                     itemCount: coins.length,
                     itemBuilder: (_, index) {
                       return Container(
-                        margin: EdgeInsets.only(top: 10, left: 10),
-                        decoration: BoxDecoration(),
+                        margin: const EdgeInsets.only(top: 10, left: 10),
+                        decoration: const BoxDecoration(),
                         child: Row(
                           children: [
                             CircleAvatar(

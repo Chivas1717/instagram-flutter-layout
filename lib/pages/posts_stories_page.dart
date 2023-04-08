@@ -43,12 +43,14 @@ class _PostsStoriesState extends State<PostsStories> {
 
   @override
   Widget build(BuildContext context) {
-    bool themeDark = Provider.of<ThemeSettings>(context, listen: true).isDark;
+    bool themeDark =
+        Provider.of<ThemeSettings>(context, listen: true).selectedTheme ==
+            ThemeData.dark();
 
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(FontAwesomeIcons.instagram),
+          icon: const Icon(FontAwesomeIcons.instagram),
           color: themeDark ? Colors.white : Colors.black,
           iconSize: 33,
           onPressed: _switchTheme,

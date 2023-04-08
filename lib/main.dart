@@ -10,7 +10,6 @@ import 'my_home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // SharedPreferences.setMockInitialValues({});
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   final isThemeDark = sharedPreferences.getBool('is_dark') ?? true;
 
