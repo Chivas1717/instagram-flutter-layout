@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_instagram_layout/bloc/posts_bloc_event.dart';
-import 'package:flutter_instagram_layout/bloc/posts_bloc_state.dart';
+import 'package:flutter_instagram_layout/blocs/posts/posts_bloc_event.dart';
+import 'package:flutter_instagram_layout/blocs/posts/posts_bloc_state.dart';
 
 class PostsBloc extends Bloc<PostsBlocEvent, PostsState> {
   PostsBloc() : super(PostsInitial()) {

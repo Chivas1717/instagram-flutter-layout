@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/components/drawer_item.dart';
 import 'package:flutter_instagram_layout/components/profile_info.dart';
 import 'package:flutter_instagram_layout/pages/saved_page.dart';
+import 'package:flutter_instagram_layout/providers/theme_settings.dart';
+import 'package:provider/provider.dart';
 
 import '../components/profile_posts.dart';
+import 'crypto_market_page.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -15,24 +18,29 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
+    bool themeDark = Provider.of<ThemeSettings>(context, listen: true).isDark;
+
     return Scaffold(
       appBar: AppBar(
-        leading: const Center(
+        leading: Center(
           child: Text(
             'markguddest',
             style: TextStyle(
-                color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                color: themeDark ? Colors.white : Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
           ),
         ),
         leadingWidth: 150,
-        iconTheme: const IconThemeData(color: Colors.black),
+        iconTheme:
+            IconThemeData(color: themeDark ? Colors.white : Colors.black),
         shape: const Border(
           bottom: BorderSide(
             color: Color.fromARGB(255, 201, 199, 195),
             width: 0.4,
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: themeDark ? Colors.grey[860] : Colors.white,
         automaticallyImplyLeading: false,
       ),
       endDrawer: Drawer(
@@ -75,6 +83,22 @@ class _ProfileState extends State<Profile> {
                 child: const DrawerItem(
                   icon: Icon(Icons.bookmark_border),
                   title: 'Saved',
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const CryptoMarket();
+                      },
+                    ),
+                  );
+                },
+                child: const DrawerItem(
+                  icon: Icon(Icons.currency_bitcoin),
+                  title: 'CryptoMarket',
                 ),
               ),
             ],

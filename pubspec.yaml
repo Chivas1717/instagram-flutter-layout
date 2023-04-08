@@ -40,6 +40,9 @@ dependencies:
   font_awesome_flutter: ^10.4.0
   flutter_bloc: ^8.1.2
   shared_preferences: ^2.1.0
+  json_serializable: ^6.1.4
+  dio: ^5.1.1
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:

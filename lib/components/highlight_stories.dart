@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../providers/story_model.dart';
+import '../providers/theme_settings.dart';
 
 class HighlightStories extends StatelessWidget {
   final storiesList = [
@@ -44,17 +46,21 @@ class HighlightStories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool themeDark = Provider.of<ThemeSettings>(context, listen: true).isDark;
+
     return Container(
       height: 99,
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.only(top: 10.0),
       padding: const EdgeInsets.only(bottom: 10),
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom:
-              BorderSide(color: Color.fromARGB(255, 201, 199, 195), width: 0.4),
+      decoration: BoxDecoration(
+        border: const Border(
+          bottom: BorderSide(
+            color: Color.fromARGB(255, 201, 199, 195),
+            width: 0.4,
+          ),
         ),
-        color: Colors.white,
+        color: themeDark ? Colors.grey[860] : Colors.white,
       ),
       child: ListView.builder(
         itemCount: storiesList.length,

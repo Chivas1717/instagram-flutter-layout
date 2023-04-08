@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/components/recomendations_block.dart';
+import 'package:provider/provider.dart';
 
 import '../models/post_model.dart';
+import '../providers/theme_settings.dart';
 
 class Search extends StatelessWidget {
   Search({super.key});
@@ -103,12 +105,14 @@ class Search extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool themeDark = Provider.of<ThemeSettings>(context, listen: true).isDark;
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
-        backgroundColor: Colors.white,
+        backgroundColor: themeDark ? Colors.grey[860] : Colors.white,
         title: Container(
           height: 30,
           margin: const EdgeInsets.only(left: 20),

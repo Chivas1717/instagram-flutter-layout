@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_instagram_layout/bloc/posts_bloc_bloc.dart';
-import 'package:flutter_instagram_layout/bloc/posts_bloc_state.dart';
+import 'package:flutter_instagram_layout/blocs/posts/posts_bloc_bloc.dart';
+import 'package:flutter_instagram_layout/blocs/posts/posts_bloc_state.dart';
 import 'package:flutter_instagram_layout/components/post.dart';
 import 'package:flutter_instagram_layout/providers/theme_settings.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -43,11 +43,13 @@ class _PostsStoriesState extends State<PostsStories> {
 
   @override
   Widget build(BuildContext context) {
+    bool themeDark = Provider.of<ThemeSettings>(context, listen: true).isDark;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(FontAwesomeIcons.instagram),
-          color: Colors.black,
+          color: themeDark ? Colors.white : Colors.black,
           iconSize: 33,
           onPressed: _switchTheme,
         ),
@@ -62,7 +64,7 @@ class _PostsStoriesState extends State<PostsStories> {
                   padding: EdgeInsets.zero,
                   constraints: const BoxConstraints(),
                   icon: const Icon(Icons.favorite_border),
-                  color: Colors.black,
+                  color: themeDark ? Colors.white : Colors.black,
                   iconSize: 28,
                   onPressed: () {},
                 ),
@@ -70,7 +72,7 @@ class _PostsStoriesState extends State<PostsStories> {
                   padding: EdgeInsets.zero,
                   constraints: const BoxConstraints(),
                   icon: const Icon(Icons.message),
-                  color: Colors.black,
+                  color: themeDark ? Colors.white : Colors.black,
                   iconSize: 30,
                   onPressed: () {},
                 )
@@ -78,7 +80,7 @@ class _PostsStoriesState extends State<PostsStories> {
             ),
           ),
         ],
-        backgroundColor: Colors.white,
+        backgroundColor: themeDark ? Colors.grey[860] : Colors.white,
         shape: const Border(
           bottom: BorderSide(
             color: Color.fromARGB(255, 201, 199, 195),

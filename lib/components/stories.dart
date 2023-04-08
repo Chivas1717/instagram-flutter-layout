@@ -25,8 +25,8 @@ class _StoriesState extends State<Stories> {
           bottom:
               BorderSide(color: Color.fromARGB(255, 201, 199, 195), width: 0.4),
         ),
-        color: Provider.of<ThemeSettings>(context, listen: false).isDark == true
-            ? Colors.grey[800]
+        color: Provider.of<ThemeSettings>(context, listen: true).isDark == true
+            ? Colors.grey[860]
             : Colors.white,
       ),
       child: Consumer<StoryModel>(

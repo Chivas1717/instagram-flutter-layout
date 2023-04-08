@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/components/highlight_stories.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/theme_settings.dart';
 
 class ProfileInfo extends StatelessWidget {
   const ProfileInfo({super.key});
 
   @override
   Widget build(BuildContext context) {
+    bool themeDark = Provider.of<ThemeSettings>(context, listen: true).isDark;
+
     return Container(
       padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
       child: Column(
@@ -149,7 +154,7 @@ class ProfileInfo extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 10),
                   alignment: Alignment.centerLeft,
                   decoration: BoxDecoration(
-                    color: Colors.grey[300],
+                    color: themeDark ? Colors.grey[900] : Colors.grey[300],
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Column(
@@ -159,6 +164,7 @@ class ProfileInfo extends StatelessWidget {
                         'Professional dashboard',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
+                          // color: themeDark ? Colors.white : Colors.black,
                         ),
                       ),
                       Text(
@@ -175,7 +181,8 @@ class ProfileInfo extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         margin: const EdgeInsets.only(right: 5),
                         decoration: BoxDecoration(
-                          color: Colors.grey[300],
+                          color:
+                              themeDark ? Colors.grey[900] : Colors.grey[300],
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Center(
@@ -193,7 +200,8 @@ class ProfileInfo extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         margin: const EdgeInsets.only(left: 5),
                         decoration: BoxDecoration(
-                          color: Colors.grey[300],
+                          color:
+                              themeDark ? Colors.grey[900] : Colors.grey[300],
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Center(

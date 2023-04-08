@@ -10,6 +10,7 @@ class ThemeSettings extends ChangeNotifier {
   ThemeSettings(bool isThemeDark) {
     if (isThemeDark) {
       _selectedTheme = ThemeData.dark();
+      // sharedPreferences.setBool('is_dark', false);
     } else {
       _selectedTheme = ThemeData.light();
     }

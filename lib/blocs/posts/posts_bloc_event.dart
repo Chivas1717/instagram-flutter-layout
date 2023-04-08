@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/post_model.dart';
+import '../../models/post_model.dart';
 
 @immutable
 abstract class PostsBlocEvent {}

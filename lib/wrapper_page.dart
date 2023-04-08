@@ -4,6 +4,8 @@ import 'package:flutter_instagram_layout/pages/posts_stories_page.dart';
 import 'package:flutter_instagram_layout/pages/profile_page.dart';
 import 'package:flutter_instagram_layout/pages/reels_page.dart';
 import 'package:flutter_instagram_layout/pages/search_page.dart';
+import 'package:flutter_instagram_layout/providers/theme_settings.dart';
+import 'package:provider/provider.dart';
 
 class WrapperPage extends StatefulWidget {
   const WrapperPage({super.key, required this.title});
@@ -68,6 +70,9 @@ class _WrapperPage extends State<WrapperPage>
 
   @override
   Widget build(BuildContext context) {
+    bool themeDark = Provider.of<ThemeSettings>(context, listen: true).isDark;
+    Color iconColor = themeDark ? Colors.white : Colors.black;
+
     final List<Widget> widgetOptions = _widgetOptions();
     return SizedBox(
       child: Scaffold(
@@ -85,28 +90,35 @@ class _WrapperPage extends State<WrapperPage>
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
-              icon:
-                  Icon(_selectedIndex == 0 ? Icons.home : Icons.home_outlined),
+              icon: Icon(
+                _selectedIndex == 0 ? Icons.home : Icons.home_outlined,
+                color: iconColor,
+              ),
               label: 'home',
             ),
             BottomNavigationBarItem(
               icon: _selectedIndex == 1
-                  ? const Icon(
+                  ? Icon(
                       Icons.search,
-                      color: Colors.black,
+                      color: iconColor,
                     )
-                  : const Icon(Icons.search),
+                  : Icon(
+                      Icons.search,
+                      color: iconColor,
+                    ),
               label: "search",
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 _selectedIndex == 2 ? Icons.add_box : Icons.add_box_outlined,
+                color: iconColor,
               ),
               label: "add",
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 _selectedIndex == 3 ? Icons.movie : Icons.movie_outlined,
+                color: iconColor,
               ),
               label: "reels",
             ),
@@ -115,6 +127,7 @@ class _WrapperPage extends State<WrapperPage>
                 _selectedIndex == 4
                     ? Icons.account_circle
                     : Icons.account_circle_outlined,
+                color: iconColor,
               ),
               label: "profile",
             ),

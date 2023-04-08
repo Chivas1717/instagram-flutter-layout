@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_instagram_layout/bloc/posts_bloc_bloc.dart';
-import 'package:flutter_instagram_layout/bloc/posts_bloc_event.dart';
+import 'package:flutter_instagram_layout/blocs/posts/posts_bloc_bloc.dart';
+import 'package:flutter_instagram_layout/blocs/posts/posts_bloc_event.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../models/post_model.dart';
