@@ -9,6 +9,12 @@ import 'package:flutter_instagram_layout/repo/repositories.dart';
 class CryptoMarket extends StatelessWidget {
   const CryptoMarket({super.key});
 
+  static Map<String, String> coinAvatars = {
+    'BTC': 'Bitcoin.png',
+    'ETH': 'Ethereum.png',
+    'DOGE': 'Doge.png',
+  };
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -24,22 +30,41 @@ class CryptoMarket extends StatelessWidget {
             }
 
             if (state is CryptoLoadingState) {
-              return const Center(
-                child: CircularProgressIndicator(),
+              return Scaffold(
+                body: const Center(
+                  child: CircularProgressIndicator(),
+                ),
               );
             }
             if (state is CryptoErrorState) {
-              return const Center(child: Text("Error"));
+              return Scaffold(
+                body: const Center(
+                  child: Text("Error"),
+                ),
+              );
             }
             if (state is CryptoLoadedState) {
               List<CryptoData> coins = state.coins;
               return Scaffold(
                 appBar: AppBar(
-                  leading: Icon(Icons.close),
+                  leading: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(30),
+                      onTap: () => Navigator.of(context).pop(),
+                      child: Ink(
+                        child: const Icon(
+                          Icons.arrow_back_ios_new_rounded,
+                          // color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                  title: Text('Crypto Market'),
                   actions: [
                     IconButton(
                       onPressed: refreshPrices,
-                      icon: Icon(Icons.refresh),
+                      icon: const Icon(Icons.refresh),
                     ),
                   ],
                 ),
@@ -47,9 +72,24 @@ class CryptoMarket extends StatelessWidget {
                     itemCount: coins.length,
                     itemBuilder: (_, index) {
                       return Container(
+                        margin: EdgeInsets.only(top: 10, left: 10),
                         decoration: BoxDecoration(),
                         child: Row(
                           children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.white,
+                              radius: 34,
+                              child: CircleAvatar(
+                                radius: 29,
+                                backgroundColor: Colors.transparent,
+                                backgroundImage: AssetImage(
+                                  'assets/imgs/crypto/${coinAvatars[state.coins[index].assetId!]}',
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
                             Text(
                               state.coins[index].assetId!,
                               style: const TextStyle(
@@ -57,7 +97,7 @@ class CryptoMarket extends StatelessWidget {
                                 fontSize: 14,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 30,
                             ),
                             Text(

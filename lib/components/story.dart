@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../providers/story_model.dart';
+import '../providers/story_settings.dart';
 
 class StoryTab extends StatelessWidget {
   const StoryTab({super.key, required this.story});

@@ -5,7 +5,7 @@ import 'package:flutter_instagram_layout/providers/theme_settings.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'providers/story_model.dart';
+import 'providers/story_settings.dart';
 import 'my_home_page.dart';
 
 void main() async {

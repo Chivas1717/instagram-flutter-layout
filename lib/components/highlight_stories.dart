@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/story_model.dart';
+import '../providers/story_settings.dart';
 import '../providers/theme_settings.dart';
 
 class HighlightStories extends StatelessWidget {

@@ -89,14 +89,6 @@ class StoryModel extends ChangeNotifier {
 
     notifyListeners();
   }
-
-  // void makeWatched2(Story story) {
-  //   for (var element in _items) {
-  //     if (story.id == element.id) element.isWatched = true;
-  //   }
-
-  //   notifyListeners();
-  // }
 }
 
 class Story {

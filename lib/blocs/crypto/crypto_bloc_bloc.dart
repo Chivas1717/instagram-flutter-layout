@@ -15,6 +15,12 @@ class CryptoBloc extends Bloc<CryptoEvent, CryptoState> {
     emit(CryptoLoadingState());
     try {
       final result = await _cryptoRepository.getCoins();
+      // var result;
+      // _cryptoRepository.getCoins().then(
+      //   (value) {
+      //     result = value;
+      //   },
+      // );
       emit(CryptoLoadedState(result));
     } catch (e) {
       emit(CryptoErrorState(e.toString()));

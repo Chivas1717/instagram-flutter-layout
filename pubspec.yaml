@@ -43,6 +43,7 @@ dependencies:
   json_serializable: ^6.1.4
   dio: ^5.1.1
   equatable: ^2.0.5
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +70,7 @@ flutter:
   assets:
     - assets/
     - assets/imgs/
+    - assets/imgs/crypto/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/pages/story_page.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/story_model.dart';
+import '../providers/story_settings.dart';
 import '../providers/theme_settings.dart';
 
 class Stories extends StatefulWidget {
