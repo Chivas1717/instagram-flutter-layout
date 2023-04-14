@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Notifications extends StatefulWidget {
-  const Notifications({super.key});
+class Chats extends StatelessWidget {
+  const Chats({super.key});
 
-  @override
-  State<Notifications> createState() => _NotificationsState();
-}
-
-class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[700],
       appBar: AppBar(
-        title: Text('Nested screen'),
+        title: Text('Chats'),
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
           icon: Icon(Icons.keyboard_arrow_left_outlined),
@@ -23,7 +18,7 @@ class _NotificationsState extends State<Notifications> {
       ),
       body: Center(
         child: Text(
-          'dwadwadawd',
+          'Chats will be displayed here',
           style: TextStyle(fontSize: 50, color: Colors.white),
         ),
       ),

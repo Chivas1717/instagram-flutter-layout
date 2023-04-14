@@ -5,6 +5,7 @@ import 'package:flutter_instagram_layout/pages/profile_page.dart';
 import 'package:flutter_instagram_layout/pages/reels_page.dart';
 import 'package:flutter_instagram_layout/pages/search_page.dart';
 import 'package:flutter_instagram_layout/providers/theme_settings.dart';
+import 'package:flutter_instagram_layout/utils/navigator_keys.dart';
 import 'package:provider/provider.dart';
 
 class WrapperPage extends StatefulWidget {
@@ -20,35 +21,24 @@ class _WrapperPage extends State<WrapperPage>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   int _selectedIndex = 0;
   late TabController _controller;
-  // List<Item> savedItems = <Item>[];
-
-  // void _updateSaved(bool isSaved, Item item) {
-  //   setState(() {
-  //     if (isSaved) {
-  //       savedItems.add(item);
-  //     } else {
-  //       savedItems.remove(item);
-  //     }
-  //   });
-  // }
 
   @override
   // ignore: must_call_super
-  void initState() {
-    super.initState();
-    _controller = TabController(length: _widgetOptions().length, vsync: this);
-    _controller.addListener(() {
-      setState(() {
-        _selectedIndex = _controller.index;
-      });
-    });
-  }
+  // void initState() {
+  //   super.initState();
+  //   _controller = TabController(length: _widgetOptions().length, vsync: this);
+  //   _controller.addListener(() {
+  //     setState(() {
+  //       _selectedIndex = _controller.index;
+  //     });
+  //   });
+  // }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _controller.dispose();
+  //   super.dispose();
+  // }
 
   @override
   bool get wantKeepAlive => true;
@@ -56,17 +46,32 @@ class _WrapperPage extends State<WrapperPage>
   void _onClickTab(int index) {
     setState(() {
       _selectedIndex = index;
-      _controller.animateTo(index);
+      // _controller.animateTo(index);
     });
   }
 
   List<Widget> _widgetOptions() => [
-        const PostsStories(),
+        PostsStories(navigatorKey: _navigatorKey()),
         Search(),
         const CreateScreen(),
         const Reels(),
         const Profile(),
       ];
+
+  GlobalKey<NavigatorState> _navigatorKey() {
+    switch (_selectedIndex) {
+      case 0:
+        return NavigatorKeys.bottomNavigationBarFirstItem;
+      case 1:
+        return NavigatorKeys.bottomNavigationBarSecondItem;
+      case 2:
+        return NavigatorKeys.bottomNavigationBarThirdItem;
+      case 3:
+        return NavigatorKeys.bottomNavigationBarFourthItem;
+      default:
+        return NavigatorKeys.bottomNavigationBarFifthItem;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,11 +84,7 @@ class _WrapperPage extends State<WrapperPage>
     return SizedBox(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: TabBarView(
-          controller: _controller,
-          children: widgetOptions,
-        ),
-        // _widgetOptions.elementAt(_selectedIndex),
+        body: widgetOptions.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.grey.shade700,

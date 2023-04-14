@@ -5,6 +5,8 @@ import 'package:flutter_instagram_layout/providers/theme_settings.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:flutter_instagram_layout/utils/navigator_keys.dart';
+
 import 'providers/story_settings.dart';
 import 'my_home_page.dart';
 
@@ -39,6 +41,7 @@ class MyApp extends StatelessWidget {
             title: 'Flutter Demo',
             theme: Provider.of<ThemeSettings>(context).selectedTheme,
             home: const MyHomePage(title: 'Flutter Demo Home Page'),
+            navigatorKey: NavigatorKeys.navigatorKeyMain,
           ),
         );
       },

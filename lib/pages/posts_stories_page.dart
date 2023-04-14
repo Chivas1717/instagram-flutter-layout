@@ -3,14 +3,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_instagram_layout/blocs/posts/posts_bloc_bloc.dart';
 import 'package:flutter_instagram_layout/blocs/posts/posts_bloc_state.dart';
 import 'package:flutter_instagram_layout/components/post.dart';
+import 'package:flutter_instagram_layout/pages/chats.dart';
+import 'package:flutter_instagram_layout/pages/notifications_page.dart';
 import 'package:flutter_instagram_layout/providers/theme_settings.dart';
+import 'package:flutter_instagram_layout/utils/routs.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../components/stories.dart';
+import '../utils/navigator_keys.dart';
 
 class PostsStories extends StatefulWidget {
-  const PostsStories({super.key});
+  const PostsStories({
+    super.key,
+    required this.navigatorKey,
+  });
+
+  final GlobalKey<NavigatorState> navigatorKey;
 
   @override
   State<PostsStories> createState() => _PostsStoriesState();
@@ -20,9 +29,58 @@ class _PostsStoriesState extends State<PostsStories> {
   ScrollController scrollController = ScrollController();
   bool showbtn = false;
 
+  void _push(BuildContext context, String name) {
+    BuildContext _desiredContext;
+
+    if (name == 'Notifications') {
+      _desiredContext = widget.navigatorKey.currentContext!;
+    } else {
+      _desiredContext = NavigatorKeys.navigatorKeyMain.currentContext!;
+    }
+    Navigator.of(_desiredContext).push(
+      MaterialPageRoute(builder: (context) {
+        var returnWidget;
+        if (name == 'Notifications') {
+          returnWidget = Notifications();
+        } else {
+          returnWidget = Chats();
+        }
+        return returnWidget;
+      }),
+    );
+  }
+
   void _switchTheme() {
     final settings = Provider.of<ThemeSettings>(context, listen: false);
     settings.switchTheme();
+  }
+
+  Map<String, WidgetBuilder> _routeBuilders(
+    BuildContext context,
+  ) {
+    return {
+      '/': (context) => _home(context),
+
+      // NestedScreenRoutes.detail1: (context) => Scaffold(
+      //       body: GestureDetector(
+      //         onTap: () => _push(context, 'Page 2'),
+      //         child: Text(
+      //           'Page B',
+      //           style: TextStyle(fontSize: 50),
+      //         ),
+      //       ),
+      //     ),
+
+      // NestedScreenRoutes.detail2: (context) => Scaffold(
+      //       body: GestureDetector(
+      //         onTap: () => _push(context, 'Page 2'),
+      //         child: Text(
+      //           'Page B',
+      //           style: TextStyle(fontSize: 50),
+      //         ),
+      //       ),
+      //     ),
+    };
   }
 
   @override
@@ -43,10 +101,25 @@ class _PostsStoriesState extends State<PostsStories> {
 
   @override
   Widget build(BuildContext context) {
+    var routeBuilders = _routeBuilders(context);
+
+    return Scaffold(
+      body: Navigator(
+        key: widget.navigatorKey,
+        initialRoute: NestedScreenRoutes.root,
+        onGenerateRoute: (settings) {
+          return MaterialPageRoute(
+            builder: (context) => routeBuilders[settings.name]!(context),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _home(BuildContext context) {
     bool themeDark =
         Provider.of<ThemeSettings>(context, listen: true).selectedTheme ==
             ThemeData.dark();
-
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -68,7 +141,7 @@ class _PostsStoriesState extends State<PostsStories> {
                   icon: const Icon(Icons.favorite_border),
                   color: themeDark ? Colors.white : Colors.black,
                   iconSize: 28,
-                  onPressed: () {},
+                  onPressed: () => _push(context, 'Notifications'),
                 ),
                 IconButton(
                   padding: EdgeInsets.zero,
@@ -76,7 +149,7 @@ class _PostsStoriesState extends State<PostsStories> {
                   icon: const Icon(Icons.message),
                   color: themeDark ? Colors.white : Colors.black,
                   iconSize: 30,
-                  onPressed: () {},
+                  onPressed: () => _push(context, 'Messages'),
                 )
               ],
             ),
