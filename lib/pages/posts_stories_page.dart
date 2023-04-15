@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_instagram_layout/blocs/posts/posts_bloc_bloc.dart';
 import 'package:flutter_instagram_layout/blocs/posts/posts_bloc_state.dart';
 import 'package:flutter_instagram_layout/components/post.dart';
-import 'package:flutter_instagram_layout/pages/chats.dart';
+import 'package:flutter_instagram_layout/pages/chats_page.dart';
 import 'package:flutter_instagram_layout/pages/notifications_page.dart';
 import 'package:flutter_instagram_layout/providers/theme_settings.dart';
 import 'package:flutter_instagram_layout/utils/routs.dart';
@@ -60,26 +60,7 @@ class _PostsStoriesState extends State<PostsStories> {
   ) {
     return {
       '/': (context) => _home(context),
-
-      // NestedScreenRoutes.detail1: (context) => Scaffold(
-      //       body: GestureDetector(
-      //         onTap: () => _push(context, 'Page 2'),
-      //         child: Text(
-      //           'Page B',
-      //           style: TextStyle(fontSize: 50),
-      //         ),
-      //       ),
-      //     ),
-
-      // NestedScreenRoutes.detail2: (context) => Scaffold(
-      //       body: GestureDetector(
-      //         onTap: () => _push(context, 'Page 2'),
-      //         child: Text(
-      //           'Page B',
-      //           style: TextStyle(fontSize: 50),
-      //         ),
-      //       ),
-      //     ),
+      '/notifications': (context) => Notifications(),
     };
   }
 
@@ -128,6 +109,7 @@ class _PostsStoriesState extends State<PostsStories> {
           iconSize: 33,
           onPressed: _switchTheme,
         ),
+        title: Text('wadawda'),
         actions: [
           Container(
             width: 80,
@@ -141,7 +123,27 @@ class _PostsStoriesState extends State<PostsStories> {
                   icon: const Icon(Icons.favorite_border),
                   color: themeDark ? Colors.white : Colors.black,
                   iconSize: 28,
-                  onPressed: () => _push(context, 'Notifications'),
+                  onPressed: () async {
+                    final result = await Navigator.pushNamed(
+                      context,
+                      '/notifications',
+                    ) as String;
+                    if (!mounted) return;
+
+                    ScaffoldMessenger.of(context)
+                      ..removeCurrentSnackBar()
+                      ..showSnackBar(
+                        SnackBar(
+                          duration: const Duration(seconds: 1),
+                          content: Text(
+                            result,
+                            style: const TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      );
+                  },
                 ),
                 IconButton(
                   padding: EdgeInsets.zero,
@@ -150,7 +152,7 @@ class _PostsStoriesState extends State<PostsStories> {
                   color: themeDark ? Colors.white : Colors.black,
                   iconSize: 30,
                   onPressed: () => _push(context, 'Messages'),
-                )
+                ),
               ],
             ),
           ),
