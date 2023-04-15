@@ -4,6 +4,7 @@ import 'package:flutter_instagram_layout/blocs/posts/posts_bloc_bloc.dart';
 import 'package:flutter_instagram_layout/blocs/posts/posts_bloc_state.dart';
 import 'package:flutter_instagram_layout/components/post.dart';
 import 'package:flutter_instagram_layout/pages/chats_page.dart';
+import 'package:flutter_instagram_layout/pages/crypto_market_page.dart';
 import 'package:flutter_instagram_layout/pages/notifications_page.dart';
 import 'package:flutter_instagram_layout/providers/theme_settings.dart';
 import 'package:flutter_instagram_layout/utils/routs.dart';
@@ -39,11 +40,13 @@ class _PostsStoriesState extends State<PostsStories> {
     }
     Navigator.of(_desiredContext).push(
       MaterialPageRoute(builder: (context) {
-        var returnWidget;
+        Widget returnWidget;
         if (name == 'Notifications') {
-          returnWidget = Notifications();
+          returnWidget = const Notifications(
+            value: 'passed value',
+          );
         } else {
-          returnWidget = Chats();
+          returnWidget = const Chats();
         }
         return returnWidget;
       }),
@@ -60,7 +63,8 @@ class _PostsStoriesState extends State<PostsStories> {
   ) {
     return {
       '/': (context) => _home(context),
-      '/notifications': (context) => Notifications(),
+      '/notifications': (context) => const Notifications(value: 'passed value'),
+      '/cryptomarket': (context) => const CryptoMarket(),
     };
   }
 
@@ -109,14 +113,23 @@ class _PostsStoriesState extends State<PostsStories> {
           iconSize: 33,
           onPressed: _switchTheme,
         ),
-        title: Text('wadawda'),
         actions: [
           Container(
-            width: 80,
+            width: 110,
             margin: const EdgeInsets.only(right: 10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                IconButton(
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                  icon: const Icon(Icons.currency_bitcoin),
+                  color: themeDark ? Colors.white : Colors.black,
+                  iconSize: 28,
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/cryptomarket');
+                  },
+                ),
                 IconButton(
                   padding: EdgeInsets.zero,
                   constraints: const BoxConstraints(),

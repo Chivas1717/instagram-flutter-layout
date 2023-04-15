@@ -20,7 +20,7 @@ class WrapperPage extends StatefulWidget {
 class _WrapperPage extends State<WrapperPage>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   int _selectedIndex = 0;
-  late TabController _controller;
+  // late TabController _controller;
 
   @override
   // ignore: must_call_super

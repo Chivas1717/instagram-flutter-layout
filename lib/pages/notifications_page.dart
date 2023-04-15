@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/components/notification_item.dart';
 
 class Notifications extends StatefulWidget {
-  const Notifications({super.key});
+  const Notifications({super.key, required this.value});
+  final value;
 
   @override
   State<Notifications> createState() => _NotificationsState();
@@ -18,6 +19,11 @@ class _NotificationsState extends State<Notifications> {
           'Notifications',
           style: TextStyle(fontSize: 24),
         ),
+        actions: [
+          Center(
+            child: Text(widget.value),
+          )
+        ],
         leading: IconButton(
           onPressed: () => Navigator.pop(context, 'visited notifications'),
           icon: const Icon(Icons.keyboard_arrow_left_outlined),
@@ -55,7 +61,10 @@ class _NotificationsState extends State<Notifications> {
               ),
             ),
             for (int i = 0; i < 5; i++)
-              const SizedBox(width: 392, child: NotificationItem()),
+              const SizedBox(
+                width: 392,
+                child: NotificationItem(),
+              ),
           ],
         ),
       ),

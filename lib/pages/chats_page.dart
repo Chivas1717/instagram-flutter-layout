@@ -10,13 +10,13 @@ class Chats extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'markguddest',
           style: TextStyle(fontSize: 24),
         ),
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
-          icon: Icon(Icons.keyboard_arrow_left_outlined),
+          icon: const Icon(Icons.keyboard_arrow_left_outlined),
         ),
         actions: const [
           Icon(Icons.more_horiz),
