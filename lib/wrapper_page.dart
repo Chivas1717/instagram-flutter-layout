@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/pages/create_page.dart';
-import 'package:flutter_instagram_layout/pages/posts_stories_page.dart';
-import 'package:flutter_instagram_layout/pages/profile_page.dart';
+import 'package:flutter_instagram_layout/pages/home/posts_stories_page.dart';
+import 'package:flutter_instagram_layout/pages/profile/profile_page.dart';
 import 'package:flutter_instagram_layout/pages/reels_page.dart';
 import 'package:flutter_instagram_layout/pages/search_page.dart';
 import 'package:flutter_instagram_layout/providers/theme_settings.dart';

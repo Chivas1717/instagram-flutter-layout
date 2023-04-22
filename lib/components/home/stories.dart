@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_instagram_layout/pages/story_page.dart';
+import 'package:flutter_instagram_layout/pages/home/story_page.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/story_settings.dart';
-import '../providers/theme_settings.dart';
+import '../../providers/story_settings.dart';
+import '../../providers/theme_settings.dart';
 
 class Stories extends StatefulWidget {
   const Stories({super.key});

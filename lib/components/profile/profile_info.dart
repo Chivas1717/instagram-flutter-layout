@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_instagram_layout/components/highlight_stories.dart';
+import 'package:flutter_instagram_layout/components/profile/highlight_stories.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/theme_settings.dart';
+import '../../providers/theme_settings.dart';
 
 class ProfileInfo extends StatelessWidget {
   const ProfileInfo({super.key});

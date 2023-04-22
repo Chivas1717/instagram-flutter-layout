@@ -3,16 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_instagram_layout/blocs/posts/posts_bloc_bloc.dart';
 import 'package:flutter_instagram_layout/blocs/posts/posts_bloc_state.dart';
 import 'package:flutter_instagram_layout/components/post.dart';
-import 'package:flutter_instagram_layout/pages/chats_page.dart';
-import 'package:flutter_instagram_layout/pages/crypto_market_page.dart';
-import 'package:flutter_instagram_layout/pages/notifications_page.dart';
+import 'package:flutter_instagram_layout/pages/home/chats_page.dart';
+import 'package:flutter_instagram_layout/pages/profile/crypto_market_page.dart';
+import 'package:flutter_instagram_layout/pages/home/notifications_page.dart';
 import 'package:flutter_instagram_layout/providers/theme_settings.dart';
 import 'package:flutter_instagram_layout/utils/routs.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../components/stories.dart';
-import '../utils/navigator_keys.dart';
+import '../../components/home/stories.dart';
+import '../../utils/navigator_keys.dart';
 
 class PostsStories extends StatefulWidget {
   const PostsStories({

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_layout/components/drawer_item.dart';
-import 'package:flutter_instagram_layout/components/profile_info.dart';
-import 'package:flutter_instagram_layout/pages/saved_page.dart';
+import 'package:flutter_instagram_layout/components/profile/profile_info.dart';
+import 'package:flutter_instagram_layout/pages/insights/insights_page.dart';
+import 'package:flutter_instagram_layout/pages/profile/saved_page.dart';
 import 'package:flutter_instagram_layout/providers/theme_settings.dart';
 import 'package:provider/provider.dart';
 
-import '../components/profile_posts.dart';
+import '../../components/profile/profile_posts.dart';
 import 'crypto_market_page.dart';
 
 class Profile extends StatefulWidget {
@@ -63,9 +64,21 @@ class _ProfileState extends State<Profile> {
                 icon: Icon(Icons.settings_backup_restore_rounded),
                 title: 'Archive',
               ),
-              const DrawerItem(
-                icon: Icon(Icons.insights_outlined),
-                title: 'Insights',
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const InsightsPage();
+                      },
+                    ),
+                  );
+                },
+                child: const DrawerItem(
+                  icon: Icon(Icons.insights_outlined),
+                  title: 'Insights',
+                ),
               ),
               const DrawerItem(
                 icon: Icon(Icons.qr_code_rounded),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_instagram_layout/components/button_follow.dart';
+import 'package:flutter_instagram_layout/components/home/button_follow.dart';
 
 class NotificationItem extends StatelessWidget {
   const NotificationItem({super.key});

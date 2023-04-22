@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_instagram_layout/components/story.dart';
+import 'package:flutter_instagram_layout/components/home/story.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/story_settings.dart';
+import '../../providers/story_settings.dart';
 
 class StoryPage extends StatefulWidget {
   const StoryPage({super.key, required this.index});

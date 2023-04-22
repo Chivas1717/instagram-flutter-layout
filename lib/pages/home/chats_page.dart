@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../components/chat.dart';
+import '../../components/home/chat.dart';
 
 class Chats extends StatelessWidget {
   const Chats({super.key});

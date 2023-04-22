@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_instagram_layout/components/notification_item.dart';
+import 'package:flutter_instagram_layout/components/home/notification_item.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({super.key, required this.value});
